@@ -2,7 +2,7 @@ header {
     display: grid;
     /* border: var(--test_border_1); */
     margin: 20px 30px;
-    grid-template-columns: 60% 20% 20%;
+    grid-template-columns: 50% 25% 25%;
     gap: 10px;
 }
 
