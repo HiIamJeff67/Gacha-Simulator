@@ -2,7 +2,8 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
-import HomePage from './Pages/HomePage'
+import Header from './Components/Header/Header.jsx'
+//import HomePage from './Pages/HomePage'
 import SimulatorFor1999 from './Pages/SimulatorFor1999'
 import SimulatorForGenshi from './Pages/SimulatorForGenshi'
 
@@ -10,7 +11,7 @@ const App = () => {
   return (
     <Routes>
         <Route index element={  // Home Page
-           <HomePage/>
+           <Header/>
         }/>
         <Route path='/SimulatorFor1999' element={
           <SimulatorFor1999/>

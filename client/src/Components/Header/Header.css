@@ -1,0 +1,28 @@
+header {
+    display: grid;
+    /* border: var(--test_border_1); */
+    margin: 20px 30px;
+    grid-template-columns: 60% 20% 20%;
+    gap: 10px;
+}
+
+.logo {
+    font-size: 1.6em;
+    font-weight: bold;
+    color:  rgb(255, 128, 0);
+    text-shadow: rgba(255, 128, 0, 0.60) var(--text_shader_sep);
+}
+
+nav {
+    /* border: var(--test_border_3); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25%;
+    font-size: 1.1em;
+    font-weight: 700;
+    text-shadow: white var(--text_shader_center);
+}
+.login-reg {
+    color: white;
+}

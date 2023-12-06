@@ -1,3 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
 body {
     background-color: hsl(0, 0%, 15%);
+    /* border: var(--test_border_1); */
+    width: 100vw;
+    height: 100vh;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+:root {
+    --test_border_1: 2px solid white;
+    --test_border_2: 2px solid orange;
+    --test_border_3: 2px solid yellow;
+    --transition_select_color_chage: .3s;
+    --text_shader_sep: 2px 4px 10px;
+    --text_shader_center: .5px 1px 6px;
 }

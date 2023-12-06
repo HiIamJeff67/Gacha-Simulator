@@ -1,0 +1,47 @@
+:root {
+    --icon_width: 15px;
+    --icon_height: 15px;
+}
+
+.contactContainer {
+    /* border: var(--test_border_2); */
+    z-index: 99;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.gmailLink, .githubLink {
+    /* border: var(--test_border_3); */
+    border: 2px solid white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: black;
+    font-size: .8em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: var(--transition_select_color_chage);
+}
+.gmailLink a, .githubLink a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    gap: 5px;
+    transition: var(--transition_select_color_chage);
+    color: white;
+}
+
+.gmailLink:hover, .githubLink:hover {
+    color: black;
+    background-color: white;
+}
+.gmailLink a:hover, .githubLink a:hover{
+    color: black;
+}
+.contact-icon {
+    width: var(--icon_width);
+    height: var(--icon_height);
+}
