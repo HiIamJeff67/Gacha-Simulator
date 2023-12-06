@@ -1,0 +1,38 @@
+footer {
+    border: 3px solid white;
+    width: 20%;
+    position: fixed;
+    bottom: 3%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    border-radius: 15px;
+    padding: 5px 0px;
+    background-color: transparent;
+    backdrop-filter: blur(15px);
+    z-index: 10;
+}
+.sw-bar-link {
+    width: 50px;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-sizing: border-box;
+}
+.Home-icon {
+    padding: 5px;
+}
+.Home-icon, .Reverse-icon, .Genshin-icon {
+    /* border: var(--test_border_2); */
+    border-radius: 50%;
+    background: transparent;
+    transition: var(--transition_switch_game_icon);
+}
+.Home-icon:hover, .Reverse-icon:hover, .Genshin-icon:hover {
+    background: rgb(0, 0, 0, 0.3);
+}

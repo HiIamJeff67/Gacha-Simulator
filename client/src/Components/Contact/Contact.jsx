@@ -7,18 +7,18 @@ import { MdOutgoingMail } from "react-icons/md";
 
 const Contact = () => {
   return (
-    <div className='contactContainer'>
-      <div className='gmailLink'>
+    <div className='contact-container'>
+      <div className='gmail-link'>
         <a href='mailto:iamjeffhi67@gmail.com'>
           <CgMail className='contact-icon'/>Gmail_1
         </a>
       </div>
-      <div className='gmailLink'>
+      <div className='gmail-link'>
         <a href='mailto:flash1234567890555@gmail.com'>
           <CgMail className='contact-icon'/>Gmail_2
         </a>
       </div>
-      <div className='githubLink'>
+      <div className='github-link'>
         <a href='https://github.com/HiIamJeff67/Gacha-Simulator' target='_blank'>
           <FaGithub className='contact-icon'/>Github
         </a>

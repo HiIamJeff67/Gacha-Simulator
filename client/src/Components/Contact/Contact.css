@@ -3,7 +3,7 @@
     --icon_height: 15px;
 }
 
-.contactContainer {
+.contact-container {
     /* border: var(--test_border_2); */
     z-index: 99;
     width: 80%;
@@ -13,7 +13,7 @@
     gap: 30px;
 }
 
-.gmailLink, .githubLink {
+.gmail-link, .github-link {
     /* border: var(--test_border_3); */
     border: 2px solid white;
     padding: 5px 10px;
@@ -24,7 +24,7 @@
     text-decoration: none;
     transition: var(--transition_select_color_chage);
 }
-.gmailLink a, .githubLink a {
+.gmail-link a, .github-link a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,11 +34,11 @@
     color: white;
 }
 
-.gmailLink:hover, .githubLink:hover {
+.gmail-link:hover, .github-link:hover {
     color: black;
     background-color: white;
 }
-.gmailLink a:hover, .githubLink a:hover{
+.gmail-link a:hover, .github-link a:hover{
     color: black;
 }
 .contact-icon {

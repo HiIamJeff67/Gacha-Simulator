@@ -2,23 +2,23 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
-import Header from './Components/Header/Header.jsx'
-//import HomePage from './Pages/HomePage'
+import Layout from './Layout.jsx'
+import HomePage from './Pages/HomePage'
+import LoginPage from './Pages/LoginPage.jsx'
+import RegisterPage from './Pages/RegisterPage.jsx'
 import SimulatorFor1999 from './Pages/SimulatorFor1999'
-import SimulatorForGenshi from './Pages/SimulatorForGenshi'
+import SimulatorForGenshin from './Pages/SimulatorForGenshin.jsx'
 
 const App = () => {
   return (
     <Routes>
-        <Route index element={  // Home Page
-           <Header/>
-        }/>
-        <Route path='/SimulatorFor1999' element={
-          <SimulatorFor1999/>
-        }/>
-        <Route path='/SimulatorForGenshi' element={
-          <SimulatorForGenshi/>
-        }/>
+      <Route path='/' element={<Layout/>}>
+        <Route index element={<HomePage/>}/>
+        <Route path={'/SimulatorFor1999'} element={<SimulatorFor1999/>}/>
+        <Route path={'/SimulatorForGenshin'} element={<SimulatorForGenshin/>}/>
+        <Route path={'/login'} element={<LoginPage/>}/>
+        <Route path={'/register'} element={<RegisterPage/>}/>
+      </Route>
     </Routes>
   )
 }
