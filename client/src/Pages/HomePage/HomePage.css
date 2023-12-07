@@ -1,3 +1,7 @@
+:root {
+    --home_main_img_width: 500px;
+}
+
 .home-container {
     /* border: var(--test_border_1); */
     z-index: 10;
@@ -5,7 +9,7 @@
     text-align: center;
     border-radius: 10px;
     padding: 30px 10px;
-    margin: 3% 0 0 0;
+    margin: 2.5% 0 0 0;
     min-height: 500px;
     display: flex;
     justify-content: center;
@@ -19,7 +23,7 @@
     border: 10px solid #ffaa00;
     border-radius: 15px;
     width: 75%;
-    min-height: 450px;
+    min-height: 500px;
 }
 
 .slogan {

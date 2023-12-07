@@ -5,7 +5,7 @@ import GameSwitchBar from "./Components/GameSwitchBar/GameSwitchBar";
 
 export default function Layout() {
     return (
-        <main>
+        <main style={{perspective: "30em"}}>
             <Header/>
             <BackgroundFloor/>
             <Outlet/>
