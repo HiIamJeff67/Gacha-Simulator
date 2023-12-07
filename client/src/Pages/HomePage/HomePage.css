@@ -1,0 +1,33 @@
+.home-container {
+    /* border: var(--test_border_1); */
+    z-index: 10;
+    width: auto;
+    text-align: center;
+    border-radius: 10px;
+    padding: 30px 10px;
+    margin: 3% 0 0 0;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.home-img {
+    background-image: url('../../Images/HomePageMainImg.png');
+    background-size: cover;
+    background-color: white;
+    z-index: 11;
+    border: 10px solid #ffaa00;
+    border-radius: 15px;
+    width: 75%;
+    min-height: 450px;
+}
+
+.slogan {
+    /* border: var(--test_border_1); */
+    z-index: 15;
+    color: #C70039;
+    text-align: left;
+    position: fixed;
+    text-shadow: #900C3F var(--text_shader_bold);
+    margin: 20px 30px;
+}

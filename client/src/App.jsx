@@ -3,11 +3,11 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
 import Layout from './Layout.jsx'
-import HomePage from './Pages/HomePage'
-import LoginPage from './Pages/LoginPage.jsx'
-import RegisterPage from './Pages/RegisterPage.jsx'
-import SimulatorFor1999 from './Pages/SimulatorFor1999'
-import SimulatorForGenshin from './Pages/SimulatorForGenshin.jsx'
+import HomePage from './Pages/HomePage/HomePage.jsx'
+import LoginPage from './Pages/LoginPage/LoginPage.jsx'
+import RegisterPage from './Pages/RegisterPage/RegisterPage.jsx'
+import SimulatorFor1999 from './Pages/SimulatorFor1999/SimulatorFor1999.jsx'
+import SimulatorForGenshin from './Pages/SimulatorFor1999/SimulatorForGenshin.jsx'
 
 const App = () => {
   return (

@@ -3,7 +3,6 @@ import './Contact.css'
 
 import { CgMail } from "react-icons/cg";
 import { FaGithub } from "react-icons/fa";
-import { MdOutgoingMail } from "react-icons/md";
 
 const Contact = () => {
   return (

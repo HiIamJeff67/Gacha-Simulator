@@ -1,0 +1,6 @@
+.floor {
+    z-index: -99;
+    position: absolute;
+    border: var(--test_border_1);
+    color: white;
+}

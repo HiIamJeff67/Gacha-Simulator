@@ -24,4 +24,5 @@ body {
     --transition_select_color_chage: .3s;
     --text_shader_sep: 2px 4px 10px;
     --text_shader_center: .5px 1px 6px;
+    --text_shader_bold: 4px 3px 2px;
 }
