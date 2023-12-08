@@ -1,22 +1,29 @@
 :root {
-    --floor_width: 4000px;
-    --floor_height: 500px;
+    --floor_width: 5000px;
+    --floor_height: 1200px;
+}
+
+.scene {
+    position: relative;
+    transform-style: preserve-3d;
 }
 
 .floor {
-    z-index: -99;
+    z-index: var(--z_index_floor);
     position: absolute;
     left: calc(50% - (var(--floor_width) / 2));
-    top: 50%;
+    top: 0;
     /* border: var(--test_border_1); */
     color: white;
     width: var(--floor_width);
     height: var(--floor_height);
-    background-image: repeating-conic-gradient(
-        from 45deg,
-        #111 0deg 90deg,
-        #222 90deg 180deg
-    );
-    background-size: 7em 7em;
+    background-image:
+        radial-gradient(#0000, #000 50%),
+        repeating-conic-gradient(
+            from 45deg,
+            #111 0deg 90deg,
+            #222 90deg 180deg
+        );
+    background-size: 100%, 10em 10em;
     transform: rotateX(90deg);
 }

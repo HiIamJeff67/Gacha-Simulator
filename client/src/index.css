@@ -6,10 +6,14 @@
 }
 
 body {
-    background-color: hsl(0, 0%, 15%);
+    background-color: hsl(0, 0%, 00%);
     overflow: hidden;
     width: 100vw;
     height: 100vh;
+}
+
+#root {
+    height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -20,6 +24,16 @@ body {
     --test_border_1: 2px solid white;
     --test_border_2: 2px solid orange;
     --test_border_3: 2px solid yellow;
+    --z_index_bg_floor: -99;
+    --z_index_bg_img: 0;
+    --z_index_outer_container: 10;
+    --z_index_inner_container: 11;
+    --z_index_item_1: 12;
+    --z_index_item_2: 13;
+    --z_index_item_3: 14;
+    --z_index_item_4: 15;
+    --z_index_item_5: 16;
+    --z_index_topest: 99;
     --transition_switch_game_icon: .2s;
     --transition_select_color_chage: .3s;
     --text_shader_sep: 2px 4px 10px;

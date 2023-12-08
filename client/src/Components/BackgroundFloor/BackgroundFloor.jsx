@@ -2,7 +2,9 @@ import './BackgroundFloor.css'
 
 const BackgroundFloor = () => {
   return (
-    <div className='floor'>This is the floor</div>
+    <div className='scene'>
+      <div className='floor'>This is the floor</div>
+    </div>
   )
 }
 

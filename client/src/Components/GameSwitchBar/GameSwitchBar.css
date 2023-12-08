@@ -1,9 +1,9 @@
 footer {
     border: 3px solid white;
     width: 300px;
-    position: fixed;
-    margin: 60px 0px;
+    position: absolute;
     left: 50%;
+    bottom: 50px;
     transform: translate(-50%, 0%);
     display: flex;
     justify-content: center;
@@ -13,7 +13,7 @@ footer {
     padding: 5px 0px;
     background-color: transparent;
     backdrop-filter: blur(15px);
-    z-index: 10;
+    z-index: var(--z_index_topest);
 }
 .sw-bar-link {
     width: 50px;
@@ -40,4 +40,8 @@ footer {
 
 .active {
     background-color: rgb(239, 155, 0);
+}
+
+.hide {
+    display: none;
 }

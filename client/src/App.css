@@ -1,4 +1,4 @@
 .bgImg {
-    z-index: 0;
+    z-index: var(--z_index_bg_img);
     object-fit: cover;
 }

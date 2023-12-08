@@ -4,7 +4,7 @@
 
 .home-container {
     /* border: var(--test_border_1); */
-    z-index: 10;
+    z-index: var(--z_index_outer_container);
     width: auto;
     text-align: center;
     border-radius: 10px;
@@ -19,7 +19,7 @@
     background-image: url('../../Images/HomePageMainImg.png');
     background-size: cover;
     background-color: white;
-    z-index: 11;
+    z-index: var(--z_index_item_1);
     border: 10px solid #ffaa00;
     border-radius: 15px;
     width: 75%;
@@ -28,8 +28,8 @@
 
 .slogan {
     /* border: var(--test_border_1); */
-    z-index: 15;
-    color: #C70039;
+    z-index: var(--z_index_item_2);
+    color: #ff7700;
     text-align: left;
     position: fixed;
     text-shadow: #900C3F var(--text_shader_bold);

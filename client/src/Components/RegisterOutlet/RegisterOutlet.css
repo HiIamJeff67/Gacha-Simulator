@@ -1,0 +1,72 @@
+:root {
+    --input_width: 225px;
+    --input_height: 35px;
+}
+
+.register-form {
+    border: var(--test_border_2);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    gap: 10px;
+}
+
+.register-chinese {
+    margin-top: 20%;
+}
+
+.register-input {
+    width: var(--input_width);
+    height: var(--input_height);
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+}
+.input-account {
+    margin-top: 10%;
+}
+.input-password {
+    margin-top: 2.5%;
+}
+
+.register-btn {
+    width: var(--input_width);
+    height: var(--input_height);
+    margin-top: 12.5%;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.little-eye {
+    cursor: pointer;
+    position: absolute;
+    left: 90%;
+    top: 40%;
+    user-select: none;
+}
+.little-eye-confirm {
+    cursor: pointer;
+    position: absolute;
+    left: 90%;
+    top: 50%;
+    user-select: none;
+}
+
+.hide {
+    display: none;
+}
+
+.register-icon-container{
+    transform: translateY(15%);
+}
+.register-1999-icon, .register-genshin-icon {
+    width: 90px;
+}

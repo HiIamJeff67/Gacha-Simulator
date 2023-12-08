@@ -1,0 +1,64 @@
+:root {
+    --input_width: 225px;
+    --input_height: 35px;
+}
+
+.login-form {
+    border: var(--test_border_2);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-chinese {
+    margin-top: 30%;
+}
+
+.login-input {
+    width: var(--input_width);
+    height: var(--input_height);
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+}
+.input-account {
+    margin-top: 10%;
+}
+.input-password {
+    margin-top: 2.5%;
+}
+
+.login-btn {
+    width: var(--input_width);
+    height: var(--input_height);
+    margin-top: 12.5%;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.login-form > a {
+    cursor: pointer;
+    position: absolute;
+    left: 90%;
+    top: 46%;
+    user-select: none;
+}
+.hide {
+    display: none;
+}
+
+.login-icon-container{
+    transform: translateY(25%);
+}
+.login-1999-icon, .login-genshin-icon {
+    width: 90px;
+}
