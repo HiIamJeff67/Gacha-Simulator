@@ -27,3 +27,22 @@
     background-size: 100%, 10em 10em;
     transform: rotateX(90deg);
 }
+
+@media (max-width: 600px) {
+    .floor {
+        background-image:
+            radial-gradient(#0000, #000 60%),
+            repeating-conic-gradient(
+                from 45deg,
+                #111 0deg 90deg,
+                #222 90deg 180deg
+            );
+        background-size: 90%, 7em 7em;
+    }
+}
+@media (max-width: 1200px) {
+    
+}
+@media (min-height: 1200px) {
+    
+}

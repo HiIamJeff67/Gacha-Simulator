@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import BackgroundFloor from './Components/BackgroundFloor/BackgroundFloor';
 import GameSwitchBar from "./Components/GameSwitchBar/GameSwitchBar";
+import './Layout.css'
 
 export default function Layout({ rerenderLoginState }) {
     const [loginState, setLoginState] = useState(1);
@@ -12,7 +13,7 @@ export default function Layout({ rerenderLoginState }) {
     },[rerenderLoginState])
 
     return (
-        <main style={{perspective: "27.5em", height: "100%"}}>
+        <main>
             <Header setLoginState={setLoginState}/>
             <BackgroundFloor/>
             <Outlet/>

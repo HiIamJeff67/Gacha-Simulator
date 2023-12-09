@@ -13,6 +13,8 @@
     min-height: 500px;
     display: flex;
     justify-content: center;
+    overflow: visible;
+    height: 100%;
 }
 
 .home-img {
@@ -24,6 +26,7 @@
     border-radius: 15px;
     width: 75%;
     min-height: 500px;
+    height: 70%;
 }
 
 .slogan {
@@ -34,4 +37,33 @@
     position: fixed;
     text-shadow: #900C3F var(--text_shader_bold);
     margin: 20px 30px;
+    user-select: none;
+    font-size: 15px;
+}
+
+@media (max-width: 1200px) {
+    .home-img {
+        background-size: cover;
+        background-position: center;
+    }
+    .slogan {
+        font-size: 12.5px;
+        bottom: 27.5%;
+        left: 15%;
+    }
+}
+@media (max-width: 600px) {
+    .slogan {
+        font-size: 10px;
+    }
+}
+@media (max-width: 400px) {
+    .slogan {
+        bottom: 26.5%;
+    }
+}
+@media (max-height: 700px) {
+    .slogan {
+        bottom: 15%;
+    }
 }

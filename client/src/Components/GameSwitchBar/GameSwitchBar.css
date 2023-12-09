@@ -45,3 +45,25 @@ footer {
 .hide {
     display: none;
 }
+
+@media (min-height: 1000px) {
+    footer {
+        bottom: -300px;
+    }
+}
+@media (max-width: 600px) {
+    footer {
+        width: 200px;
+    }
+    .sw-bar-link {
+        width: 40px;
+    }
+    .Home-icon, .Reverse-icon, .Genshin-icon {
+        width: 40px;
+    }
+}
+@media (max-width: 400px) {
+    footer {
+        bottom: 20px;
+    }
+}

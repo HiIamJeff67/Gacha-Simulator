@@ -51,6 +51,8 @@
     left: 90%;
     top: 46%;
     user-select: none;
+    text-decoration: none;
+    color: black;
 }
 .hide {
     display: none;
@@ -61,4 +63,45 @@
 }
 .login-1999-icon, .login-genshin-icon {
     width: 90px;
+}
+
+@media (max-width: 600px) {
+    .login-form > a {
+        left: 88%;
+        top: 33%;
+    }
+    .login-input {
+        width: calc(var(--input_width) * 0.85);
+        height: calc(var(--input_height) * 0.95);
+    }
+    .login-btn {
+        width: calc(var(--input_width) * 0.85);
+        height: calc(var(--input_height) * 0.95);
+    }
+}
+@media (max-width: 400px) {
+    .login-form > a {
+        left: 88%;
+        top: 35.25%;
+    }
+}
+@media (max-width: 380px) {
+    .login-form > a {
+        left: 89%;
+        top: 43.5%;
+    }
+    .login-input {
+        width: calc(var(--input_width) * 0.8);
+        height: calc(var(--input_height) * 0.9);
+    }
+    .login-btn {
+        width: calc(var(--input_width) * 0.8);
+        height: calc(var(--input_height) * 0.9);
+    }
+}
+@media (max-width: 365px) {
+    .login-form > a {
+        left: 89%;
+        top: 38%;
+    }
 }

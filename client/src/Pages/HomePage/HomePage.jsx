@@ -1,5 +1,4 @@
 import './HomePage.css'
-import HomePageMainImg from '../../Images/HomePageMainImg.png'
 
 const HomePage = () => {
   return (

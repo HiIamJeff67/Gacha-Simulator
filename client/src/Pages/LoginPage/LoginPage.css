@@ -27,6 +27,7 @@
     transform: rotateY(90deg);
     transform: translateX(100%);
     border-radius: var(--book_border_radius);
+    box-sizing: border-box;
 }
 .page-2 {
     text-align: center;
@@ -59,7 +60,6 @@
     background-color: var(--book_cover_texture);
     /* border: 10px solid white; */
     height: 72%;
-    width: 25%;
     position: absolute;
     left: 50%;
     padding: 3em 0;
@@ -122,4 +122,23 @@
 .login-copyright {
     font-size: 0.6em;
     font-weight: 300;
+}
+
+@media (max-width: 600px) {
+    .login-container {
+        margin: 40px 0px;
+        height: 85%;
+    }
+    .login-container > .page-2 {
+        display: none;
+    }
+    .login-container > .book-cover {
+        display: none;
+    }
+    .login-container > .page-1 {
+        position: absolute;
+        transform: rotateY(0deg) translateX(0%);
+        width: 75%;
+        height: 80%;
+    }
 }

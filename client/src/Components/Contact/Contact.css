@@ -45,3 +45,26 @@
     width: var(--icon_width);
     height: var(--icon_height);
 }
+
+@media (max-width: 600px) {
+    .contact-container {
+        position: absolute;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        width: 300px;
+        left: 50%;
+        bottom: 50%;
+        transform: translate(-50%, 375%);
+    }
+}
+@media (max-width: 400px) {
+    .contact-container {
+        display: none;
+    }   
+}
+@media (min-width: 750px) {
+    .contact-container {
+        width: 100px;
+    }   
+}
