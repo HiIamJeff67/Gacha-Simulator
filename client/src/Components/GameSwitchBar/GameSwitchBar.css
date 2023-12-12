@@ -1,10 +1,10 @@
 footer {
     border: 3px solid white;
     width: 300px;
-    position: absolute;
+    position: fixed;
     left: 50%;
-    bottom: 50px;
-    transform: translate(-50%, 0%);
+    bottom: 150px;
+    transform: translate(-50%, 150%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,24 +46,34 @@ footer {
     display: none;
 }
 
-@media (min-height: 1000px) {
+@media (max-width: 1200px) {
     footer {
-        bottom: -300px;
+        border: 2.5px solid white;
+        width: 250px;
+        transform: translate(-50%, 160%);
+    }
+    .sw-bar-link {
+        width: 45px;
+    }
+    .Home-icon, .Reverse-icon, .Genshin-icon {
+        width: 45px;
     }
 }
 @media (max-width: 600px) {
     footer {
+        border: 1.5px solid white;
         width: 200px;
+        transform: translate(-50%, 220%);
     }
     .sw-bar-link {
-        width: 40px;
+        width: 35px;
     }
     .Home-icon, .Reverse-icon, .Genshin-icon {
-        width: 40px;
+        width: 35px;
     }
 }
-@media (max-width: 400px) {
+@media (max-width: 375px) {
     footer {
-        bottom: 20px;
+        transform: translate(-50%, 275%);
     }
 }

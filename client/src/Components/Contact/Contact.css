@@ -15,6 +15,7 @@
 
 .gmail-link, .github-link {
     /* border: var(--test_border_3); */
+    z-index: var(--z_index_topest) - 1;
     border: 2px solid white;
     padding: 5px 10px;
     border-radius: 15px;
@@ -25,6 +26,7 @@
     transition: var(--transition_select_color_chage);
 }
 .gmail-link a, .github-link a {
+    z-index: var(--z_index_topest) - 2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,7 +47,14 @@
     width: var(--icon_width);
     height: var(--icon_height);
 }
-
+@media (max-width: 1200px) {
+    .contact-container {
+        width: 150px;
+    }
+    .gmail-link a, .github-link a {
+        font-size: 10px;
+    }
+}
 @media (max-width: 600px) {
     .contact-container {
         position: absolute;
@@ -55,16 +64,14 @@
         width: 300px;
         left: 50%;
         bottom: 50%;
-        transform: translate(-50%, 375%);
+        transform: translate(-50%, 374%);   /* 可以幫我測試這裡嗎？ 當我把後面那項370%改成374%以上後contact-container就會不見 */
+    }
+    .gmail-link a, .github-link a {
+        font-size: 15px;
     }
 }
 @media (max-width: 400px) {
     .contact-container {
         display: none;
-    }   
-}
-@media (min-width: 750px) {
-    .contact-container {
-        width: 100px;
     }   
 }
