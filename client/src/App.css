@@ -1,4 +1,8 @@
 .bgImg {
     z-index: var(--z_index_bg_img);
     object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

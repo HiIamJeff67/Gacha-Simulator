@@ -25,7 +25,7 @@ const LoginPage = ({ setRerenderLoginState }) => {
       </div>
       <div className='login-page page-2'>
         <p className='page-paragraph'>"Power meets Elegance: simulator draws effortlessly, witness incredible effects, and manage your card collection with elegance!"</p>
-        <img src={logo} className='page-icon'/>
+        <img src={logo} className='page-icon' alt='page-icon'/>
       </div>
     </div>
   )

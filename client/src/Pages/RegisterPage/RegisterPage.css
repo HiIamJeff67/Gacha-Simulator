@@ -23,7 +23,7 @@
     width: 25%;
     position: relative;
 }
-.page-1 {
+.register-page.page-1 {
     transform: rotateY(90deg);
     transform: translateX(100%);
     border-radius: var(--book_border_radius);

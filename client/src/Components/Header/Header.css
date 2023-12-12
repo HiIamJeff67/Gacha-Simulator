@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 header {
     display: grid;
     /* border: var(--test_border_1); */

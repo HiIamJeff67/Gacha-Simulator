@@ -51,6 +51,8 @@
     left: 90%;
     top: 40%;
     user-select: none;
+    text-decoration: none;
+    color: black;
 }
 .little-eye-confirm {
     cursor: pointer;
@@ -58,6 +60,8 @@
     left: 90%;
     top: 50%;
     user-select: none;
+    text-decoration: none;
+    color: black;
 }
 
 .hide {

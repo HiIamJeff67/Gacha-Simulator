@@ -7,7 +7,7 @@ import HomePage from './Pages/HomePage/HomePage.jsx'
 import LoginPage from './Pages/LoginPage/LoginPage.jsx'
 import RegisterPage from './Pages/RegisterPage/RegisterPage.jsx'
 import SimulatorFor1999 from './Pages/SimulatorFor1999/SimulatorFor1999.jsx'
-import SimulatorForGenshin from './Pages/SimulatorFor1999/SimulatorForGenshin.jsx'
+import SimulatorForGenshin from './Pages/SimulatorForGenshin/SimulatorForGenshin.jsx'
 
 const App = () => {
   const [rerenderLoginState, setRerenderLoginState] = useState(1);

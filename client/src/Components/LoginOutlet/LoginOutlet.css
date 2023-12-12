@@ -26,6 +26,23 @@
     text-align: center;
     outline: none;
 }
+
+.input-password-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(4.25%);
+    /* border: var(--test_border_2); */
+}
+
+.input-password-container a{
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    color: black;
+    position: relative;
+    /* border: var(--test_border_2); */
+}
 .input-account {
     margin-top: 10%;
 }
@@ -45,16 +62,7 @@
     cursor: pointer;
 }
 
-.login-form > a {
-    cursor: pointer;
-    position: absolute;
-    left: 90%;
-    top: 46%;
-    user-select: none;
-    text-decoration: none;
-    color: black;
-}
-.hide {
+.input-password-container .hide {
     display: none;
 }
 
@@ -65,7 +73,9 @@
     width: 90px;
 }
 
-@media (max-width: 600px) {
+/* ======================================== */
+
+/* @media (max-width: 600px) {
     .login-form > a {
         left: 88%;
         top: 33%;
@@ -104,4 +114,4 @@
         left: 89%;
         top: 38%;
     }
-}
+} */
