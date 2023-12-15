@@ -4,18 +4,14 @@
 }
 
 .register-form {
-    border: var(--test_border_2);
+    /* border: var(--test_border_2); */
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
-}
-
-.register-chinese {
-    margin-top: 20%;
+    gap: 5px;
 }
 
 .register-input {
@@ -26,10 +22,24 @@
     text-align: center;
     outline: none;
 }
-.input-account {
+.register-form .input-password-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: var(--test_border_2); */
+}
+.register-form .input-password-container a{
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    color: black;
+    transform: translate(-100%, -75%);
+    /* border: var(--test_border_2); */
+}
+.register-form .input-account {
     margin-top: 10%;
 }
-.input-password {
+.register-form .input-password {
     margin-top: 2.5%;
 }
 
@@ -45,26 +55,26 @@
     cursor: pointer;
 }
 
-.little-eye {
+.register-form .little-eye {
     cursor: pointer;
     position: absolute;
-    left: 90%;
-    top: 40%;
+    left: 85%;
+    top: 42%;
     user-select: none;
     text-decoration: none;
     color: black;
 }
-.little-eye-confirm {
+.register-form .little-eye-confirm {
     cursor: pointer;
     position: absolute;
-    left: 90%;
+    left: 85%;
     top: 50%;
     user-select: none;
     text-decoration: none;
     color: black;
 }
 
-.hide {
+.register-form .input-password-container .hide {
     display: none;
 }
 
@@ -73,4 +83,112 @@
 }
 .register-1999-icon, .register-genshin-icon {
     width: 90px;
+}
+
+/* =================== RWD =================== */
+
+@media (max-width: 1400px) {
+    .register-form .little-eye {
+        left: 90%;
+        top: 43%;
+    }
+    .register-form .little-eye-confirm {
+        left: 90%;
+        top: 50%;
+    }
+}
+@media (max-width: 1200px) {
+    .register-form .little-eye {
+        left: 95%;
+        top: 42%;
+    }
+    .register-form .little-eye-confirm {
+        left: 95%;
+        top: 50%;
+    }
+}
+@media (max-width: 1100px) {
+    .register-form {
+        gap: 20px;
+        height: 90%;
+    }
+    .register-form .register-chinese {
+        font-size: 3em;
+    }
+    .register-form .input-password-container a {
+        transform: translate(-150%, -175%);
+        font-size: 1.8em;
+    }
+    .register-input, .register-btn {
+        width: calc(var(--input_width) * 1.50);
+        height: calc(var(--input_height) * 1.75);
+        font-size: 1.4em;
+    }
+    .register-input {
+        border-radius: 10px;
+    }
+    .register-btn {
+        border-radius: 15px;
+    }
+    .register-icon-container {
+        transform: translateY(25%);
+    }
+    .register-1999-icon, .register-genshin-icon {
+        width: 150px;
+    }
+    .register-form .little-eye {
+        left: 90%;
+        top: 40%;
+    }
+    .register-form .little-eye-confirm {
+        left: 90%;
+        top: 40%;
+    }
+}
+@media (max-width: 800px) {
+    .register-form {
+        gap: 10px;
+        height: 100%;
+    }
+}
+@media (max-width: 600px) {
+    .register-form {
+        gap: 15px;
+        height: 90%;
+    }
+    .register-form .register-chinese {
+        font-size: 1.8em;
+    }
+    .register-form .input-password-container {
+        transform: translateY(30%);
+    }
+    .register-form .input-password-container a {
+        transform: translate(150%, -10%);
+        font-size: 1em;
+    }
+    .register-input, .register-btn {
+        width: calc(var(--input_width) * 0.85);
+        height: calc(var(--input_height) * 0.95);
+        font-size: 1em;
+    }
+    .register-input {
+        border-radius: 5px;
+    }
+    .register-btn {
+        border-radius: 10px;
+    }
+    .register-icon-container {
+        transform: translateY(15%);
+    }
+    .register-1999-icon, .register-genshin-icon {
+        width: 90px;
+    }
+}
+@media (max-width: 375px) {
+    .register-form {
+        height: 100%;
+    }
+    .register-input {
+        transform: translateY(5%);
+    }
 }

@@ -12,7 +12,6 @@ const LoginOutlet = () => {
         <h1 className="login-chinese">登入</h1>
         <div className="input-account-container">
           <input type="text" placeholder="account" className="login-input input-account"></input>
-          
         </div>
         <div className="input-password-container">
           <input type={(eyeState) === "enable" ? "password" : "text"} placeholder="password" className="login-input input-password"></input>

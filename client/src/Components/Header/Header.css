@@ -5,7 +5,7 @@
 header {
     display: grid;
     /* border: var(--test_border_1); */
-    margin-top: 30px;
+    margin-top: 15px;
     grid-template-columns: 45% 25% 25%;
     z-index: var(--z_index_outer_container);
     justify-content: center;
@@ -15,7 +15,6 @@ header {
 
 .logo {
     /* border: var(--test_border_3); */
-    padding-left: 8%;
     text-align: left;
     font-size: 1.6em;
     font-weight: bold;
@@ -38,6 +37,9 @@ nav {
 }
 
 @media (max-width: 1200px) {
+    header {
+        grid-template-columns: 40% 30% 20%;
+    }
     .logo {
         font-size: 1.4em;
     }
@@ -53,6 +55,7 @@ nav {
     }
     .logo {
         font-size: 1em;
+        padding-left: 8%;
     }
     nav {
         font-size: 0.8em;
