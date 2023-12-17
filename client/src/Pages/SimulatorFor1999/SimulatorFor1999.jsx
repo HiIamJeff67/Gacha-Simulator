@@ -17,11 +17,11 @@ const SimulatorFor1999 = () => {
       <Link to={'/GachaDetails1999'} className='details-1999'>Details</Link>
       <div className='draw-container'>
         <Link to={'/SingleGachaDisplay1999'} className='single-draw-1999'>
-          <div className='single-draw-icon'><img src={UnilogImg} width={'35px'}/>x1</div>
+          <div className='single-draw-icon'><img src={UnilogImg} width={'35px'}/></div>
           Summon x1
         </Link>
         <Link to={'/MultiGachaDisplay1999'} className='ten-draw-1999'>
-        <div className='ten-draw-icon'><img src={UnilogImg} width={'35px'}/>x10</div>
+          <div className='ten-draw-icon'><img src={UnilogImg} width={'35px'}/></div>
           Summon x10
         </Link>
       </div>

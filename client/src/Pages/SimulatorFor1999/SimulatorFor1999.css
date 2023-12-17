@@ -64,7 +64,7 @@ select {
     border-radius: 5px;
 }
 
-.draw-container {
+.simulator-container-1999 .draw-container {
     /* border: var(--test_border_1); */
     z-index: var(--z_index_item_1);
     text-decoration: none;
@@ -100,7 +100,7 @@ select {
     height: 100%;
     color: black;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     gap: 5px;
     padding-right: 5px;
@@ -108,11 +108,57 @@ select {
     border-radius: 2px;
 }
 
-.single-draw-icon, .ten-draw-icon {
+.simulator-container-1999 .single-draw-icon, .simulator-container-1999 .ten-draw-icon {
     /* border: var(--test_border_2); */
     font-size: 0.8em;
     display: flex;
     justify-content: left;
     align-items: center;
     width: 35%;
+    gap: 10px;
+}
+.simulator-container-1999 .single-draw-icon::after {
+    content: "x1";
+    position: relative;
+    transform: translateX(-50%);
+}
+.simulator-container-1999 .ten-draw-icon::after {
+    content: "x10";
+    position: relative;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 1000px) {
+    .simulator-container-1999 .summon-pool-selector-container .summon-pool-selector, .details-1999{
+        margin: 0;
+    }
+    .simulator-container-1999 .summon-pool-selector-container, .simulator-container-1999 .details-1999, .simulator-container-1999 .draw-container {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .simulator-container-1999 {
+        background: url('../../Images/gachaBG1999.png');
+        background-size: cover;
+        height: 80%;
+        transform: translate(-50%, -60%);
+    }
+    .simulator-container-1999 .summon-pool-selector-container {
+        top: 15%;
+    }
+    .simulator-container-1999 .details-1999 {
+        bottom: 30%;
+    }
+    .simulator-container-1999 .draw-container {
+        bottom: 17.5%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        margin: 0;
+    }
+    .single-draw-1999, .ten-draw-1999 {
+        width: 50%;
+    }
+    .single-draw-icon, .ten-draw-icon {
+        width: 35%;
+    }
 }

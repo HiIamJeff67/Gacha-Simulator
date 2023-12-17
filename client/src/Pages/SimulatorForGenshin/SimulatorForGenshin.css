@@ -3,7 +3,7 @@
 }
 
 .simulator-container-genshin {
-    border: 5px solid transparent;  /* 我發現原神的抽卡介面沒邊框(?! */
+    border: none;  /* 我發現原神的抽卡介面沒邊框(?! */
     z-index: var(--z_index_outer_container);
     color: white;
     position: relative;
@@ -29,7 +29,7 @@ select {
 }
 .simulator-container-genshin .summon-pool-selector-container .summon-pool-selector {
     z-index: var(--z_index_item_1);
-    margin: 25px;
+    margin: 30px;
     border: none;
     border-radius: 15px;
     width: 200px;
@@ -54,7 +54,7 @@ select {
     z-index: var(--z_index_item_3);
     bottom: 0;
     left: 0;
-    margin: 0 0 15px 30px;
+    margin: 0 0 20px 35px;
     border: 1px solid black;
     background: var(--container_outline_border_color_2);
     width: 100px;
@@ -80,7 +80,7 @@ select {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 30px 15px 0;
+    margin: 0 35px 20px 0;
     right: 0;
     bottom: 0;
 }
@@ -119,5 +119,52 @@ select {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 35%;
     gap: 10px;
+}
+.simulator-container-genshin .single-draw-icon::after {
+    content: "x1";
+    position: relative;
+    transform: translateX(-50%);
+}
+.simulator-container-genshin .ten-draw-icon::after {
+    content: "x10";
+    position: relative;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 1000px) {
+    .simulator-container-genshin .summon-pool-selector-container .summon-pool-selector, .details-genshin{
+        margin: 0;
+    }
+    .simulator-container-genshin .summon-pool-selector-container, .simulator-container-genshin .details-genshin, .simulator-container-genshin .draw-container {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .simulator-container-genshin {
+        background: url('../../Images/gachaBGGenshin.jpeg');
+        background-size: cover;
+        border: none;
+        height: 80%;
+        transform: translate(-50%, -60%);
+    }
+    .simulator-container-genshin .summon-pool-selector-container {
+        top: 15%;
+    }
+    .simulator-container-genshin .details-genshin {
+        bottom: 37.5%;
+    }
+    .simulator-container-genshin .draw-container {
+        bottom: 20%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        margin: 0;
+    }
+    .single-draw-genshin, .ten-draw-genshin {
+        width: 50%;
+    }
+    .single-draw-icon, .ten-draw-icon {
+        width: 35%;
+    }
 }

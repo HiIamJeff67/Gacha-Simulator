@@ -57,6 +57,7 @@
 }
 @media (max-width: 600px) {
     .contact-container {
+        z-index: var(--z_index_topest);
         position: absolute;
         display: flex;
         flex-wrap: wrap;
