@@ -64,7 +64,7 @@
         width: 300px;
         left: 50%;
         bottom: 50%;
-        transform: translate(-50%, 374%);   /* 可以幫我測試這裡嗎？ 當我把後面那項370%改成374%以上後contact-container就會不見 */
+        transform: translate(-50%, 375%);   /* 可以幫我測試這裡嗎？ 當我把後面那項370%改成375%以上後contact-container就會不見 */
     }
     .gmail-link a, .github-link a {
         font-size: 15px;

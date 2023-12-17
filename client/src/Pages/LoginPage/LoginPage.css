@@ -143,21 +143,3 @@
         height: 80%;
     }
 }
-@media (max-width: 600px) {
-    .login-container {
-        margin: 40px 0px;
-        height: 85%;
-    }
-    .login-container > .page-2 {
-        display: none;
-    }
-    .login-container > .book-cover {
-        display: none;
-    }
-    .login-container > .page-1 {
-        position: absolute;
-        transform: rotateY(0deg) translateX(0%);
-        width: 75%;
-        height: 80%;
-    }
-}

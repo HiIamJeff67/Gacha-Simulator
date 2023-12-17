@@ -5,19 +5,13 @@ import BackgroundFloor from './Components/BackgroundFloor/BackgroundFloor';
 import GameSwitchBar from "./Components/GameSwitchBar/GameSwitchBar";
 import './Layout.css'
 
-export default function Layout({ rerenderLoginState }) {
-    const [loginState, setLoginState] = useState(1);
-    
-    useEffect(() => {
-        setLoginState(rerenderLoginState);
-    },[rerenderLoginState])
-
+export default function Layout() {
     return (
         <main>
-            <Header setLoginState={setLoginState}/>
+            <Header/>
             <BackgroundFloor/>
             <Outlet/>
-            <GameSwitchBar loginState={loginState}/>
+            <GameSwitchBar/>
         </main>
     );
 }

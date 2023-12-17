@@ -1,0 +1,123 @@
+:root {
+    --genshin_wish_outline: 3px solid #dccea9;
+}
+
+.simulator-container-genshin {
+    border: 5px solid transparent;  /* 我發現原神的抽卡介面沒邊框(?! */
+    z-index: var(--z_index_outer_container);
+    color: white;
+    position: relative;
+    height: 65%;
+    width: 85%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    background-color: green;
+}
+select {
+    outline: none;
+}
+.simulator-container-genshin .summon-pool-selector-container, .details-genshin, .draw-container {
+    position: absolute;
+    text-decoration: none;
+    outline: none;
+}
+.simulator-container-genshin .summon-pool-selector-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.simulator-container-genshin .summon-pool-selector-container .summon-pool-selector {
+    z-index: var(--z_index_item_1);
+    margin: 25px;
+    border: none;
+    border-radius: 15px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text_color_1);
+    text-shadow: 1px 1px 1px var(--text_color_2_shader);
+    box-shadow: 3px 2px 10px black;
+    background-color: rgba(255, 255, 255, 0.55);
+    appearance: none;
+}
+.simulator-container-genshin .summon-pool-selector-container .select-arrow {
+    z-index: var(--z_index_item_2);
+    transform: translateX(-300%);
+    color: black;
+    font-size: 1.1em;
+}
+
+.details-genshin {
+    z-index: var(--z_index_item_3);
+    bottom: 0;
+    left: 0;
+    margin: 0 0 15px 30px;
+    border: 1px solid black;
+    background: var(--container_outline_border_color_2);
+    width: 100px;
+    height: 30px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 1px 1px 2px hsl(0, 0%, 15%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.draw-container {
+    /* border: var(--test_border_1); */
+    z-index: var(--z_index_item_1);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    width: 375px;
+    height: 11%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30px 15px 0;
+    right: 0;
+    bottom: 0;
+}
+.single-draw-genshin {
+    z-index: var(--z_index_item_2);
+    border: var(--genshin_wish_outline);
+    background-color: white;
+    width: 45%;
+    height: 100%;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 3px 5px black;
+    border-radius: 15px;
+}
+.ten-draw-genshin {
+    z-index: var(--z_index_item_2);
+    border: var(--genshin_wish_outline);
+    background-color: white;
+    width: 45%;
+    height: 100%;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 3px 5px black;
+    border-radius: 15px;
+}
+
+.single-draw-icon, .ten-draw-icon {
+    /* border: var(--test_border_2); */
+    font-size: 0.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

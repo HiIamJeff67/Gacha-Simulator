@@ -1,33 +1,48 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './GameSwitchBar.css'
 
 import HomeIcon from '../../Images/HomeIcon.png'
 import ReverseIcon from '../../Images/ReverseIcon.png'
 import GenshinIcon from '../../Images/GenshinIcon.png'
 
-const GameSwitchBar = ({ loginState }) => {
+const GameSwitchBar = () => {
+  const location = useLocation();
   const [activeItem, setActiveItem] = useState("#");
 
   useEffect(() => {
-    setActiveItem("#");
-  }, [loginState]);
+    let dir = location.pathname.slice(1).toLowerCase();
+    setActiveItem(`#${dir}`);
+    console.log(activeItem);
+  }, [location]);
+
+  const checkActiveItemString = function(activeItemString) {
+    activeItemString = activeItemString.toLowerCase();
+    if (activeItem === "#login" || activeItem === "#register") return true;
+    const detectWord = "gacha";
+    let i = 0;
+    for (const letter of activeItemString) {
+      if (letter == detectWord[i]) i++;
+      if (i == detectWord.length - 1) return true;
+    }
+    return false;
+  }
 
   return (
-    <footer className={loginState == 1 ? "" : "hide"}>
+    <footer className={checkActiveItemString(activeItem) ? "hide" : ""}>
         <Link to={'/'} 
           className={`sw-bar-link ${(activeItem === "#") ? "active": ""}`}
           onClick={() => setActiveItem("#")}>
             <img src={HomeIcon} width="50px" className='Home-icon'/>
         </Link>
         <Link to={'/SimulatorFor1999'}
-          className={`sw-bar-link ${(activeItem === "#sim-1") ? "active" : ""}`}
-          onClick={() => setActiveItem("#sim-1")}>
+          className={`sw-bar-link ${(activeItem === "#SimulatorFor1999".toLocaleLowerCase()) ? "active" : ""}`}
+          onClick={() => setActiveItem("#SimulatorFor1999".toLocaleLowerCase())}>
             <img src={ReverseIcon} width="50px" className='Reverse-icon'/>
         </Link>
         <Link to={'/SimulatorForGenshin'} 
-          className={`sw-bar-link ${(activeItem === "#sim-2") ? "active" : ""}`} 
-          onClick={() => setActiveItem("#sim-2")}>
+          className={`sw-bar-link ${(activeItem === "#simulatorForGenshin".toLocaleLowerCase()) ? "active" : ""}`} 
+          onClick={() => setActiveItem("#SimulatorForGenshin".toLocaleLowerCase())}>
             <img src={GenshinIcon} width="50px" className='Genshin-icon'/>
         </Link>
     </footer>

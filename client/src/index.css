@@ -25,6 +25,10 @@ body::-webkit-scrollbar {
     --test_border_1: 2px solid white;
     --test_border_2: 2px solid orange;
     --test_border_3: 2px solid yellow;
+    --container_outline_border_color_1: #ffaa00;
+    --container_outline_border_color_2: #e2e0d4;
+    --text_color_1: #ff7700;
+    --text_color_2_shader: #900C3F;
     --z_index_bg_floor: -99;
     --z_index_bg_img: 0;
     --z_index_outer_container: 10;

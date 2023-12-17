@@ -3,12 +3,8 @@ import logo from '../../Images/logo.png'
 import LoginOutlet from '../../Components/LoginOutlet/LoginOutlet';
 import './LoginPage.css'
 
-const LoginPage = ({ setRerenderLoginState }) => {
+const LoginPage = () => {
   const [bookState, setBookState] = useState("");
-
-  useEffect(() => {
-    setRerenderLoginState(0);
-  },[]);
 
   return (
     <div className="login-container">

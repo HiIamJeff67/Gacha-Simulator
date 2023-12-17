@@ -3,12 +3,8 @@ import logo from '../../Images/logo.png'
 import RegisterOutlet from '../../Components/RegisterOutlet/RegisterOutlet';
 import './RegisterPage.css'
 
-const RegisterPage = ({ setRerenderLoginState }) => {
+const RegisterPage = () => {
   const [bookState, setBookState] = useState("");
-
-  useEffect(() => {
-    setRerenderLoginState(0);
-  },[]);
 
   return (
     <div className="register-container">
