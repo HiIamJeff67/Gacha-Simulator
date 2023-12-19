@@ -29,7 +29,7 @@ select {
 }
 .simulator-container-genshin .summon-pool-selector-container .summon-pool-selector {
     z-index: var(--z_index_item_1);
-    margin: 30px;
+    margin: 25px;
     border: none;
     border-radius: 15px;
     width: 200px;
@@ -45,7 +45,8 @@ select {
 }
 .simulator-container-genshin .summon-pool-selector-container .select-arrow {
     z-index: var(--z_index_item_2);
-    transform: translateX(-300%);
+    position: absolute;
+    transform: translateX(400%);
     color: black;
     font-size: 1.1em;
 }

@@ -40,8 +40,9 @@ select {
     appearance: none;
 }
 .simulator-container-1999 .summon-pool-selector-container .select-arrow {
+    position: absolute;
     z-index: var(--z_index_item_2);
-    transform: translateX(-300%);
+    transform: translateX(400%);
     color: black;
     font-size: 1.1em;
 }
@@ -95,7 +96,7 @@ select {
 }
 .ten-draw-1999 {
     z-index: var(--z_index_item_2);
-    background-color: hsl(33, 100%, 44%);
+    background-color: var(--draw_bg_1999);
     width: 47.5%;
     height: 100%;
     color: black;
