@@ -1,0 +1,38 @@
+.response-message-register {
+    border: 2px solid var(--book_cover_texture);
+    position: absolute;
+    z-index: calc(var(--z_index_topest) * 10);
+    width: 110%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    background-color: var(--book_page_texture);
+    padding: 5px;
+}
+.response-message-register .error-message {
+    color: hsl(0, 100%, 45%);
+}
+.response-message-register .loading-message {
+    color: rgb(0, 210, 210);
+}
+
+.response-message-register .error-confirm {
+    border: 2px solid black;
+    padding: 0 5px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    margin: 5px 0;
+    transition: var(--transition_select_color_change);
+}
+
+.response-message-register .error-confirm:hover {
+    color: black;
+    background-color: white;
+}
+

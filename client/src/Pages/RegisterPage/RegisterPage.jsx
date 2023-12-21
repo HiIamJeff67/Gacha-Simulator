@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import logo from '../../Images/logo.png'
 import RegisterOutlet from '../../Components/RegisterOutlet/RegisterOutlet';
 import './RegisterPage.css'
@@ -18,7 +18,7 @@ const RegisterPage = () => {
       </div>
       <div className={`register-page page-1 ${bookState}`}>
         <p className='page-paragraph'>"Power meets Elegance: simulator draws effortlessly, witness incredible effects, and manage your card collection with elegance!"</p>
-        <img src={logo} className='page-icon'/>
+        <img src={logo} className='page-icon' alt='logo'/>
       </div>
       <div className='register-page page-2'>
         <RegisterOutlet/>

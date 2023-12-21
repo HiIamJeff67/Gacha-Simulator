@@ -28,13 +28,45 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25%;
+    gap: 15%;
     font-size: 1.1em;
     font-weight: 700;
     text-shadow: white var(--text_shader_center);
 }
 .login-reg {
     color: white;
+    cursor: pointer;
+    border: 2px solid black;
+    padding-bottom: 1px;
+    transition: var(--transition_select_color_change_slower);
+}
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+}
+.user-account {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 15px;
+    width: 50%;
+    padding: 0 5px 0 5px;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition_select_color_change_slower);
+    font-size: 0.8em;
+    gap: 10%;
+}
+
+.login-reg:hover {
+    border-bottom: 2px solid white;
+}
+.user-account:hover {
+    background-color: white;
+    color: black;
 }
 
 @media (max-width: 1200px) {
@@ -50,14 +82,25 @@ nav {
     }
 }
 @media (max-width: 1100px) {
+    header {
+        grid-template-columns: 40% 35% 15%;
+    }
     .logo {
         width: 60%;
+    }
+    .user-icon {
+        width: 35px;
+        height: 35px;
+    }
+    .user-account {
+        width: 100%;
     }
 }
 @media (max-width: 600px) {
     header {
         display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-columns: 1.1fr 0.9fr;
+        padding-right: 4%;
     }
     .logo {
         font-size: 1em;
@@ -66,6 +109,10 @@ nav {
     }
     nav {
         font-size: 0.8em;
+    }
+    .user-icon {
+        width: 25px;
+        height: 25px;
     }
 }
 @media (max-width: 375px) {

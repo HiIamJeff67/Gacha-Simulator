@@ -41,7 +41,8 @@ body::-webkit-scrollbar {
     --z_index_item_5: 16;
     --z_index_topest: 99;
     --transition_switch_game_icon: .2s;
-    --transition_select_color_chage: .3s;
+    --transition_select_color_change: .3s;
+    --transition_select_color_change_slower: .5s;
     --text_shader_sep: 2px 4px 10px;
     --text_shader_center: .5px 1px 6px;
     --text_shader_bold: 4px 3px 2px;

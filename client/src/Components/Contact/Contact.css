@@ -23,26 +23,26 @@
     font-size: .8em;
     font-weight: bold;
     text-decoration: none;
-    transition: var(--transition_select_color_chage);
+    transition: var(--transition_select_color_change);
+    color: white;
 }
-.gmail-link a, .github-link a {
-    z-index: var(--z_index_topest) - 2;
+.contact-container .gmail-link a, .contact-container .github-link a {
+    z-index: var(--z_index_topest);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 15px;
     gap: 5px;
-    transition: var(--transition_select_color_chage);
-    color: white;
+    transition: var(--transition_select_color_change);
+    color: inherit;
 }
 
 .gmail-link:hover, .github-link:hover {
     color: black;
     background-color: white;
 }
-.gmail-link a:hover, .github-link a:hover{
-    color: black;
-}
+
+
 .contact-icon {
     width: var(--icon_width);
     height: var(--icon_height);

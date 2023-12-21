@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import logo from '../../Images/logo.png'
 import LoginOutlet from '../../Components/LoginOutlet/LoginOutlet';
 import './LoginPage.css'

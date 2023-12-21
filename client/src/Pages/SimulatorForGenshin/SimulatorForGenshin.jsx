@@ -18,11 +18,11 @@ const SimulatorForGenshin = () => {
       <div className='draw-container'>
         <Link to={'/SingleGachaDisplayGenshin'} className='single-draw-genshin'>
           Wish x1
-          <div className='single-draw-icon'><img src={intertwinedFate} width={'25px'}/></div>
+          <div className='single-draw-icon'><img src={intertwinedFate} width={'25px'} alt='intertwinedFate'/></div>
         </Link>
         <Link to={'/MultiGachaDisplayGenshin'} className='ten-draw-genshin'>
           Wish x10
-          <div className='ten-draw-icon'><img src={intertwinedFate} width={'25px'}/></div>
+          <div className='ten-draw-icon'><img src={intertwinedFate} width={'25px'} alt='intertwinedFate'/></div>
         </Link>
       </div>
     </div>

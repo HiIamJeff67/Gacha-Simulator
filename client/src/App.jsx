@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { AuthContext } from './Context/AuthContext.js'
 import './App.css'
 
 import Layout from './Layout.jsx'
 import HomePage from './Pages/HomePage/HomePage.jsx'
 import LoginPage from './Pages/LoginPage/LoginPage.jsx'
 import RegisterPage from './Pages/RegisterPage/RegisterPage.jsx'
-
-
 import SimulatorFor1999 from './Pages/SimulatorFor1999/SimulatorFor1999.jsx'
-
 import GachaDetails1999 from './Pages/SimulatorFor1999/GachaDetails1999.jsx';
 import SingleGachaDisplay1999 from './Pages/SimulatorFor1999/GachaingDisplay1999/SingleGachaDisplay1999.jsx';
 import MultiGachaDisplay1999 from './Pages/SimulatorFor1999/GachaingDisplay1999/MultiGachaDisplay1999.jsx';
-
 import SimulatorForGenshin from './Pages/SimulatorForGenshin/SimulatorForGenshin.jsx'
-
 import GachaDetailsGenshin from './Pages/SimulatorForGenshin/GachaDetailsGenshin.jsx';
 import SingleGachaDisplayGenshin from './Pages/SimulatorForGenshin/GachaingDisplayGenshin/SingleGachaDisplayGenshin.jsx';
 import MultiGachaDisplayGenshin from './Pages/SimulatorForGenshin/GachaingDisplayGenshin/MultiGachaDisplayGenshin.jsx';
 
 const App = () => {
+  const {currentUser} = useContext(AuthContext);
+
+  console.log(currentUser);
+  
   return (
     <Routes>
       <Route path='/' element={<Layout/>}>

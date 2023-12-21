@@ -13,7 +13,7 @@ const GameSwitchBar = () => {
   useEffect(() => {
     let dir = location.pathname.slice(1).toLowerCase();
     setActiveItem(`#${dir}`);
-    console.log(activeItem);
+    // console.log(activeItem);
   }, [location]);
 
   const checkActiveItemString = function(activeItemString) {

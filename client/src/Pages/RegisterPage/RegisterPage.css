@@ -124,7 +124,7 @@
     font-weight: 300;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
     .register-container {
         margin: 40px 0px;
         height: 85%;
