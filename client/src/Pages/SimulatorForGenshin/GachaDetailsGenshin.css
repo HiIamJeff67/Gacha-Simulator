@@ -5,29 +5,69 @@
 .gacha-details-container-genshin {
     z-index: var(--z_index_outer_container);
     position: relative;
-    border: var(--test_border_1);
+    /* border: var(--test_border_2); */
     width: 75%;
     height: 72%;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -65%);
     background-color: var(--details_bg_genshin);
-}
-
-
-
-
-.details-info-genshin {
     overflow-y: scroll;
+    padding: 3% 5% 2% 5%;
 }
-.details-info-genshin::-webkit-scrollbar {
+.gacha-details-container-genshin::-webkit-scrollbar {
     background-color: var(--details_bg_genshin);
     width: 10px;
 }
-.details-info-genshin::-webkit-scrollbar-thumb {
-    background-color: hsl(0, 0%, 0%);
+.gacha-details-container-genshin::-webkit-scrollbar-thumb {
+    background-color: hsl(0, 0%, 75%);
     border-radius: 10px;
 }
-.details-info-genshin::-webkit-scrollbar-button {
+.gacha-details-container-genshin::-webkit-scrollbar-button {
     display: none;
+}
+.details-info-genshin {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 10px;
+}
+.details-info-genshin h2 {
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+    padding: 0 0 .5% 1%;
+    font-size: 1.6em;
+}
+.details-info-genshin h3 {
+    padding: .5%;
+    padding-left: 1.5%;
+    color: white;
+    background-color: rgb(193, 153, 87);
+    font-size: 1.3em;
+}
+.details-info-genshin .title-context {
+    padding-left: 1%;
+    font-weight: 500;
+}
+.details-info-genshin ul {
+    padding-left: 3%;
+    font-weight: 600;
+}
+.highlight {
+    color: hsl(0, 100%, 40%);
+    font-weight: bold;
+}
+.rule-genshin h5 {
+    font-size: 1.3em;
+    margin: 1% 1% 1% 0;
+    padding-left: 1%;
+}
+.item-5-star-genshin .title-5-star, .item-4-star-genshin .title-4-star {
+    padding: 0 0 .5% 1%;
+    font-weight: 500;
+}
+.item-5-star-genshin .context-5-star, .item-4-star-genshin .context-4-star {
+    padding-left: 1%;
+    font-weight: 500;
+    color: hsl(0, 0%, 40%);
+    margin-bottom: 2%;
 }

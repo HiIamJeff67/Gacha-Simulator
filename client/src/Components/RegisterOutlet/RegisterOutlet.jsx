@@ -8,8 +8,17 @@ const RegisterOutlet = () => {
   const [eyeState_1, setEyeState_1] = useState("enable");
   const [eyeState_2, setEyeState_2] = useState("enable");
 
+  const handleSubmit = function(ev) {
+    ev.preventDefault();
+    const account = ev.target[0].value;
+    const password = ev.target[1].value;
+    const confirmPassword = ev.target[2].value;
+    
+    
+  }
+
   return (
-    <form className="register-form">
+    <form className="register-form" onSubmit={handleSubmit}>
         <h1 className="register-chinese">註冊</h1>
         <div className="input-account-container">
           <input type="text" placeholder="account" className="register-input input-account"></input>
