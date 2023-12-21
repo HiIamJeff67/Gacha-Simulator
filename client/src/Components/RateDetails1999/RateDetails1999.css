@@ -1,0 +1,49 @@
+:root {
+    --basic_star_width: 21;
+}
+
+.rate-details-container-1999 {
+    z-index: var(--z_index_topest);
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid hsl(0, 0%, 70%);
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: top;
+    gap: 2%;
+    padding: 3% 5% 0 5%;
+}
+.rate-details-container-1999 .rate-details-header {
+    font-weight: bold;
+    color: var(--details_title_color_1999);
+    border-bottom: 1px solid hsl(0, 0%, 70%);
+    padding: 0 0 1.5% .5%;
+}
+.star-title {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 2%;
+    border-bottom: 1px solid hsl(0, 0%, 70%);
+    padding: .5%;
+    font-weight: 500;
+}
+.stars-6, .stars-5, .stars-4, .stars-3, .stars-2 {
+    font-size: 1.2em;
+    width: auto;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 5%;
+}
+.stars-6 {width: calc(var(--basic_star_width) * 6px);}
+.stars-5 {width: calc(var(--basic_star_width) * 5px);}
+.stars-4 {width: calc(var(--basic_star_width) * 4px);}
+.stars-3 {width: calc(var(--basic_star_width) * 3px);}
+.stars-2 {width: calc(var(--basic_star_width) * 2px);}
+
+.star-content {
+    margin-top: 1%;
+    font-weight: 400;
+}

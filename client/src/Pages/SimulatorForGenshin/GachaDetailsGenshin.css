@@ -1,0 +1,33 @@
+:root {
+    --details_bg_genshin: #ebebeb;
+}
+
+.gacha-details-container-genshin {
+    z-index: var(--z_index_outer_container);
+    position: relative;
+    border: var(--test_border_1);
+    width: 75%;
+    height: 72%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -65%);
+    background-color: var(--details_bg_genshin);
+}
+
+
+
+
+.details-info-genshin {
+    overflow-y: scroll;
+}
+.details-info-genshin::-webkit-scrollbar {
+    background-color: var(--details_bg_genshin);
+    width: 10px;
+}
+.details-info-genshin::-webkit-scrollbar-thumb {
+    background-color: hsl(0, 0%, 0%);
+    border-radius: 10px;
+}
+.details-info-genshin::-webkit-scrollbar-button {
+    display: none;
+}

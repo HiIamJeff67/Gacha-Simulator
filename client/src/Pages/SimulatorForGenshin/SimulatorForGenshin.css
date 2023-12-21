@@ -4,6 +4,7 @@
 
 .simulator-container-genshin {
     border: none;  /* 我發現原神的抽卡介面沒邊框(?! */
+    padding: 5px;
     z-index: var(--z_index_outer_container);
     color: white;
     position: relative;

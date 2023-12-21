@@ -1,3 +1,4 @@
+import StarFor1999 from '../StarFor1999/StarFor1999';
 import './GachaRule1999.css';
 
 const GachaRule = () => {
@@ -14,11 +15,11 @@ const GachaRule = () => {
         <h3 className='summon-rate-title'>Summon Rates</h3>
         <div className='summon-rate-context'>
           <p>In every banner :</p>
-          <p>Basic rate of summoning 6 <span className='star-1999'>✦</span> character: <span className='rule-rate'>1.5%</span>. Overall rate (including Guarantee): <span className='rule-rate'>2.36%</span>;</p>
-          <p>Basic rate of summoning 5 <span className='star-1999'>✦</span> character: <span className='rule-rate'>8.5%</span>;</p>
-          <p>Basic rate of summoning 4 <span className='star-1999'>✦</span> character: <span className='rule-rate'>40%</span>;</p>
-          <p>Basic rate of summoning 3 <span className='star-1999'>✦</span> character: <span className='rule-rate'>45%</span>;</p>
-          <p>Basic rate of summoning 2 <span className='star-1999'>✦</span> character: <span className='rule-rate'>5%</span>.</p>
+          <p>Basic rate of summoning 6 <StarFor1999/> character: <span className='rule-rate'>1.5%</span>. Overall rate (including Guarantee): <span className='rule-rate'>2.36%</span>;</p>
+          <p>Basic rate of summoning 5 <StarFor1999/> character: <span className='rule-rate'>8.5%</span>;</p>
+          <p>Basic rate of summoning 4 <StarFor1999/> character: <span className='rule-rate'>40%</span>;</p>
+          <p>Basic rate of summoning 3 <StarFor1999/> character: <span className='rule-rate'>45%</span>;</p>
+          <p>Basic rate of summoning 2 <StarFor1999/> character: <span className='rule-rate'>5%</span>.</p>
         </div>
         
         <ul className='summon-rate-list'>

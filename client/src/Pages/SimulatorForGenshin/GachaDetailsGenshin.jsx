@@ -2,7 +2,11 @@ import './GachaDetailsGenshin.css';
 
 const GachaDetailsGenshin = () => {
   return (
-    <div>GachaDetailsGenshin</div>
+    <div className='gacha-details-container-genshin'>
+      <div className='details-info-genshin'>
+        
+      </div>
+    </div>
   )
 }
 

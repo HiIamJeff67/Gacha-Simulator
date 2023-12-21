@@ -3,8 +3,8 @@
 }
 
 .gacha-details-container-1999 {
-    position: relative;
     z-index: var(--z_index_outer_container);
+    position: relative;
     color: black;
     width: 75%;
     height: 72%;
@@ -14,6 +14,7 @@
     display: grid;
     grid-template-columns: 20% 80%;
     background-color: var(--details_bg_1999);
+    /* overflow-y: scroll; */
 }
 .gacha-details-container-1999 .details-side-bar-1999 {
     display: flex;
@@ -35,10 +36,17 @@
 .probability-title.active {
     color: var(--draw_bg_1999);
 }
-.details-table-1999 {
-    border-left: 1px solid hsl(0, 0%, 0%);
-    width: auto;
+.details-info-1999 {
+    overflow-y: scroll;
 }
-.gacha-details-container-1999 thead {
-    display: flex;
+.details-info-1999::-webkit-scrollbar {
+    background-color: var(--details_bg_1999);
+    width: 10px;
+}
+.details-info-1999::-webkit-scrollbar-thumb {
+    background-color: hsl(0, 0%, 30%);
+    border-radius: 10px;
+}
+.details-info-1999::-webkit-scrollbar-button {
+    display: none;
 }

@@ -1,0 +1,38 @@
+.table-1999-container {
+    /* border: var(--test_border_3); */
+    width: 100%;
+    height: auto;
+    border-left: 1px solid hsl(0, 0%, 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 2% 5% 2%;
+}
+.table-1999 {
+    /* border: var(--test_border_2); */
+    width: 90%;
+    border-spacing: 2px 5px;
+}
+.table-1999 th {
+    border: 3px solid black;
+    font-size: 1em;
+    border-radius: 5px;
+}
+.tbody-1999 td {
+    border: 1.5px solid black;
+    text-align: center;
+    font-size: .9em;
+    border-radius: 5px;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.table-star-1999 {
+    font-weight: 700;
+}
+.table-chr-1999 {
+    font-weight: 400;
+}
+.table-date-1999 {
+    font-weight: 350;
+}
