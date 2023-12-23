@@ -44,13 +44,13 @@ const RegisterOutlet = () => {
           try {
             await updateProfile(res.user, {
               displayName,
-              photoURL: downloadURL,
+              photoURL: (file === undefined) ? null : downloadURL,
             });
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
               displayName,
               email,
-              photoURL: downloadURL,
+              photoURL: (file === undefined) ? null : downloadURL,
             });
             navigate('/');
             setError("");

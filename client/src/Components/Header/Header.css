@@ -44,7 +44,7 @@ nav {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    color: white;
+    color: inherit;
 }
 .user-account {
     display: flex;

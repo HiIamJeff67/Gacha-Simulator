@@ -1,11 +1,11 @@
-import { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { signOut } from 'firebase/auth'
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase.js';
-import { AuthContext } from '../../Context/AuthContext.js'
-import './Header.css'
+import { AuthContext } from '../../Context/AuthContext.js';
+import './Header.css';
 import { FaRegUserCircle } from "react-icons/fa";
-import Contact from '../Contact/Contact.jsx'
+import Contact from '../Contact/Contact.jsx';
 
 const Header = () => {
   const {currentUser} = useContext(AuthContext);
@@ -19,8 +19,8 @@ const Header = () => {
                           <Link to='/Register' className='login-reg'>Register</Link></>)}
         {currentUser && (<><div className='login-reg' onClick={() => {signOut(auth)}}>Logout</div>
                             <div className='login-reg user-account'>
-                                {(currentUser.photoURL != null) ? 
-                                  (<img src={currentUser.photoURL} className='user-icon' alt={''}/>) : (<FaRegUserCircle className='user-icon'/>)}
+                                {(currentUser.photoURL === null) ? 
+                                  (<FaRegUserCircle className='user-icon'/>) : (<img src={currentUser.photoURL} className='user-icon' alt=''/>)}
                                 <p className='username'>{currentUser.displayName}</p>
                             </div></>)}
       </nav>

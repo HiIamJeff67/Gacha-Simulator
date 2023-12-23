@@ -4,8 +4,12 @@ import UnilogImg from '../../Images/unilog.png';
 import './SimulatorFor1999.css';
 
 const SimulatorFor1999 = () => {
+  const simulatorContainerStyle = {
+    background: "" || "green",
+  };
+
   return (
-    <div className='simulator-container-1999'>
+    <div className='simulator-container-1999' style={simulatorContainerStyle}>
       <div className='summon-pool-selector-container'>
         <select className='summon-pool-selector'>
           <option value={'item-1'}>item-1</option>
