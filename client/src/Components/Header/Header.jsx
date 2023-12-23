@@ -20,8 +20,9 @@ const Header = () => {
         {currentUser && <div className='login-reg' onClick={() => {signOut(auth)}}>Logout</div>}
         {currentUser && 
           <div className='login-reg user-account'>
-            {<img src={currentUser.photoURL} className='user-icon' alt=''></img> || <FaRegUserCircle className='user-icon'/>}
-          <p className='username'>{currentUser.displayName}</p>
+            {(currentUser.photoURL == null) ? 
+              (<img src={currentUser.photoURL} className='user-icon' alt={''}/>) : (<FaRegUserCircle className='user-icon'/>)}
+            <p className='username'>{currentUser.displayName}</p>
           </div>}
       </nav>
     </header>
