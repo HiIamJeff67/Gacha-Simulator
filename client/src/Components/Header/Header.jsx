@@ -15,15 +15,14 @@ const Header = () => {
       <Link to='/' className='logo'>Gacha Simulator</Link>
       <Contact/>
       <nav>
-        {!currentUser && <Link to='/login' className='login-reg'>Login</Link>}
-        {!currentUser && <Link to='/Register' className='login-reg'>Register</Link>}
-        {currentUser && <div className='login-reg' onClick={() => {signOut(auth)}}>Logout</div>}
-        {currentUser && 
-          <div className='login-reg user-account'>
-            {(currentUser.photoURL == null) ? 
-              (<img src={currentUser.photoURL} className='user-icon' alt={''}/>) : (<FaRegUserCircle className='user-icon'/>)}
-            <p className='username'>{currentUser.displayName}</p>
-          </div>}
+        {!currentUser && (<><Link to='/login' className='login-reg'>Login</Link>
+                          <Link to='/Register' className='login-reg'>Register</Link></>)}
+        {currentUser && (<><div className='login-reg' onClick={() => {signOut(auth)}}>Logout</div>
+                            <div className='login-reg user-account'>
+                                {(currentUser.photoURL != null) ? 
+                                  (<img src={currentUser.photoURL} className='user-icon' alt={''}/>) : (<FaRegUserCircle className='user-icon'/>)}
+                                <p className='username'>{currentUser.displayName}</p>
+                            </div></>)}
       </nav>
     </header>
   )
