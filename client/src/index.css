@@ -25,8 +25,9 @@ body::-webkit-scrollbar {
     --test_border_1: 2px solid white;
     --test_border_2: 2px solid orange;
     --test_border_3: 2px solid yellow;
-    --container_outline_border_color_1: #ffaa00;
+    --container_outline_border_color_1: #ff8c00;
     --container_outline_border_color_2: #e2e0d4;
+    --container_outline_border_color_3: #8b4513;
     --text_color_1: #ff7700;
     --text_color_2_shader: #900C3F;
     --draw_bg_1999: hsl(20, 84%, 50%);
@@ -43,6 +44,7 @@ body::-webkit-scrollbar {
     --transition_switch_game_icon: .2s;
     --transition_select_color_change: .3s;
     --transition_select_color_change_slower: .5s;
+    --transition_summon_animation: .9s;
     --text_shader_sep: 2px 4px 10px;
     --text_shader_center: .5px 1px 6px;
     --text_shader_bold: 4px 3px 2px;
