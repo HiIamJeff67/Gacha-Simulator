@@ -1,4 +1,8 @@
 .simulator-container-1999 {
+    background: url('../../Images/InitialBgImg1999.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border: 5px solid var(--container_outline_border_color_1);
     z-index: var(--z_index_outer_container);
     color: white;
@@ -24,13 +28,14 @@ select {
 }
 .simulator-container-1999 .summon-pool-selector-container .summon-pool-selector {
     z-index: var(--z_index_item_1);
-    margin: 25px;
+    margin: 50px 15px;
     border: none;
     border-radius: 15px;
-    width: 200px;
+    width: 250px;
     height: 50px;
-    text-align: center;
-    font-size: 1.2em;
+    text-align: left;
+    padding-left: 10%;
+    font-size: 0.7em;
     font-weight: bold;
     color: var(--text_color_1);
     text-shadow: 1px 1px 1px var(--text_color_2_shader);
@@ -41,7 +46,7 @@ select {
 .simulator-container-1999 .summon-pool-selector-container .select-arrow {
     position: absolute;
     z-index: var(--z_index_item_2);
-    transform: translateX(400%);
+    transform: translateX(500%);
     color: black;
     font-size: 1.1em;
 }
@@ -138,7 +143,6 @@ select {
     }
     .simulator-container-1999 {
         background: url('../../Images/gachaBG1999.png');
-        background-size: cover;
         height: 80%;
         transform: translate(-50%, -60%);
     }

@@ -25,5 +25,5 @@ var CharacterSchema = new Schema({
     required: true
   }
 });
-var Chr = mongoose.model("summonPoolData", CharacterSchema, "summonPool");
+var Chr = mongoose.model("summonPool", CharacterSchema, "summonPool");
 module.exports = Chr;

@@ -30,13 +30,14 @@ select {
 }
 .simulator-container-genshin .summon-pool-selector-container .summon-pool-selector {
     z-index: var(--z_index_item_1);
-    margin: 25px;
+    margin: 50px 15px;
     border: none;
     border-radius: 15px;
     width: 200px;
     height: 50px;
-    text-align: center;
-    font-size: 1.2em;
+    text-align: left;
+    padding-left: 10%;
+    font-size: 0.7em;
     font-weight: bold;
     color: var(--text_color_1);
     text-shadow: 1px 1px 1px var(--text_color_2_shader);

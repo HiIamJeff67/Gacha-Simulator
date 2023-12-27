@@ -51,6 +51,7 @@ const SingleGachaDisplay1999 = () => {
         {videoState && (
             <video 
               className='video-1999'
+              muted
               autoPlay
               onEnded={() => setVideoState(false)}
               >

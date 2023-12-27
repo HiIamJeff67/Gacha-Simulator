@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import CharacterStarGenerator from './CharacterStarGenerator';
 import './MultiGachaDisplay1999.css';
 
@@ -13,7 +13,8 @@ const MultiGachaDisplay1999 = () => {
   const [rerenderKey, setRerenderKey] = useState(0);  // to prevent the user fresh the page
   const [tempChrInfo, setTempChrInfo] = useState([]);
   const [chrInfo, setChrInfo] = useState([]);
-  const [videoState, setVideoState] = useState(false);
+  const guaranteeDetRef = useRef(0);
+  const [videoState, setVideoState] = useState(true);
 
   useEffect(() => {
     setChrInfo(prevChrInfo => [...prevChrInfo, tempChrInfo]);
@@ -22,33 +23,48 @@ const MultiGachaDisplay1999 = () => {
   useEffect(() => {
     setTempChrInfo([]);
     setChrInfo([]);
+    setVideoState(true);
+
     const abortController = new AbortController();
 
-    setVideoState(true);
-    for (let _ = 0; _ < _SUMMONTiMES; _++) {
-      getChrs(abortController);
-    }
+    getChrs(abortController)
+    guaranteeDetRef.current = 0;
 
     return () => {
       abortController.abort();
     };
   }, [rerenderKey]);
 
-  const getChrs = function (abortController) {
-    fetch(API_BASE + "/randomSelectOne", { signal: abortController.signal })
-      .then(res => res.json())
-      .then(data => {
-        setTempChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
-      })
-      .catch(error => {
-        if (error === "AbortError") {
-          console.log(`Use Abort to debug twice fetching : ${error}`);
+  const getChrs = async function (abortController) {
+    try {
+      for (let _ = 0; _ < _SUMMONTiMES; _++) {
+        if (guaranteeDetRef.current < 9) {
+          const response = await fetch(API_BASE + "/randomSelectOne", { signal: abortController.signal });
+          const data = await response.json();
+  
+          setTempChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
+  
+          if (data.star < 4) {
+            guaranteeDetRef.current += 1;
+          }
+        } else {
+          guaranteeDetRef.current = 0;
+  
+          const response = await fetch(API_BASE + "/getGuarantee4star", { signal: abortController.signal });
+          const data = await response.json();
+  
+          setTempChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
         }
-        else {
-          console.log(`Error during summoning : ${error}`);
-        }
-      });
-  }
+      }
+    } catch (error) {
+      if (error.name === "AbortError") {
+        console.log("Fetch aborted:", error.message);
+      } else {
+        console.log("Error during summoning:", error.message);
+      }
+    }
+  };
+  
 
   const summonAgain = function() {  // use useState to lead the useEffect to make a rerender
     setRerenderKey(prevKey => prevKey + 1);
@@ -58,8 +74,9 @@ const MultiGachaDisplay1999 = () => {
     <div className={`ten-summon-container-1999 ${videoState ? "" : "video-end"}`}>
       <div className='result-container-1999'>
         {videoState && (
-            <video 
+            <video
               className='video-1999'
+              muted
               autoPlay
               onEnded={() => setVideoState(false)}
               >
@@ -69,7 +86,7 @@ const MultiGachaDisplay1999 = () => {
           <div className='result-chr-wrapper-1999'>
             {chrInfo.map((chrData, index) => {
               if (chrData.length === 0) {
-                // console.log("This is for debugging");
+                // console.log("This is for debugging : Skip the first 2 empty index");
                 return;
               }
               return (

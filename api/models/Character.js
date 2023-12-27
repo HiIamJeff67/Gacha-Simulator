@@ -24,5 +24,5 @@ const CharacterSchema = new Schema({
     }
 })
 
-const Chr = mongoose.model("summonPoolData", CharacterSchema, "summonPool");
+const Chr = mongoose.model("summonPool", CharacterSchema, "summonPool");
 module.exports = Chr;

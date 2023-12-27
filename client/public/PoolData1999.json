@@ -1,0 +1,31 @@
+{
+    "character": [
+        {
+            "index": 1,
+            "poolName": "Pop is Everythinhg",
+            "poolBgURLFromSimulator": "https://gamecms-res-hw.sl916.com/official_website_resource/60001/4/PICTURE/20231122/Ver1.1%20PC11_5083316bdab649908729aaee10ca5ac8.jpg",
+            "rateUpChr_1": "梅蘭妮",
+            "rateUpChr_2": "",
+            "rateUpChr_3": "",
+            "rateUpChr_4": ""
+        },
+        {
+            "index": 2,
+            "poolName": "Thus Spoke the Border Collie",
+            "poolBgURLFromSimulator": "https://gamecms-res-hw.sl916.com/official_website_resource/60001/4/PICTURE/20231122/Ver1.1%20PC6_f254e14fa94e4381a94a5c286bef82ef.jpg",
+            "rateUpChr_1": "牧羊犬",
+            "rateUpChr_2": "",
+            "rateUpChr_3": "",
+            "rateUpChr_4": ""
+        },
+        {
+            "index": 3,
+            "poolName": "The Fairies Shining at Night",
+            "poolBgURLFromSimulator": "https://gamecms-res-hw.sl916.com/official_website_resource/60001/4/PICTURE/20231219/1-1_89447496b1bc4d24b13eace1d135d159.jpg",
+            "rateUpChr_1": "牙仙",
+            "rateUpChr_2": "",
+            "rateUpChr_3": "",
+            "rateUpChr_4": ""
+        }
+    ]
+}
