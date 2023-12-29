@@ -33,6 +33,43 @@
 .table-chr-1999 {
     font-weight: 400;
 }
-.table-date-1999 {
+.table-rate-1999 {
     font-weight: 350;
+}
+
+.small-title {
+    font-size: .1em;
+    font-weight: 350;
+    line-height: 25em;
+}
+
+.table-1999-star-title {
+    display: inline;
+}
+.table-1999-star-title-alt {
+    display: none;
+}
+
+.rateUp-chr {
+    color: #ff7700;
+    text-shadow: 1px 1px 1px #900C3F;
+}
+
+@media (max-width: 600px) {
+    .table-1999 thead{
+        font-size: 0.3em;
+    }
+    .tbody-1999 td {
+        padding-left: 0%;
+        padding-right: 0%;
+        font-size: .7em;
+    }
+    .table-star-1999 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .table-1999-star-title-alt {
+        display: inline;
+    }
 }

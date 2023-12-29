@@ -90,6 +90,10 @@
     width: 90px;
 }
 
+.login-contact {
+    display: none;
+}
+
 /* =================== RWD =================== */
 
 @media (max-width: 1100px) {
@@ -159,6 +163,11 @@
     }
     .login-1999-icon, .login-genshin-icon {
         width: 90px;
+    }
+    .login-contact {
+        display: block;
+        position: absolute;
+        bottom: 10%;
     }
 }
 @media (max-width: 375px) {

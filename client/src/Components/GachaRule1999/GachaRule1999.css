@@ -54,3 +54,12 @@
 .rule-container-1999 .rule-rate {
     color: var(--draw_bg_1999);
 }
+
+@media (max-width: 600px) {
+    .rule-container-1999 {
+        font-size: .8em;
+    }
+    .summon-rate .summon-rate-context p {
+        font-size: .5em;
+    }
+}

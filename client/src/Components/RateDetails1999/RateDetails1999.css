@@ -47,3 +47,17 @@
     margin-top: 1%;
     font-weight: 400;
 }
+
+@media (max-width: 600px) {
+    .rate-details-container-1999 {
+        font-size: .9em;
+    }
+    .appear-title {
+        text-align: center;
+        font-size: .8em;
+        width: 100px;
+    }
+    .stars-6, .stars-5, .stars-4, .stars-3, .stars-2 {
+        font-size: 1em;
+    }
+}

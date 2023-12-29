@@ -18,14 +18,13 @@ const SimulatorFor1999 = () => {
     const fetchData = async () => {
       try {
         const response = await fetch('/PoolData1999.json');
-
         if (!response.ok) {
           throw new Error(`Failed to fetch JSON, status: ${response.status}`);
         }
 
         const jsonData = await response.json();
         setCurPoolData(jsonData);
-        console.log(jsonData.character[0].poolBgURLFromSimulator);
+        // console.log(jsonData.character[0].poolBgURLFromSimulator);
       } catch (err) {
         console.error(`Error during fetching curPoolData from public json file: ${err.message}`);
       }
@@ -36,7 +35,7 @@ const SimulatorFor1999 = () => {
 
   useEffect(() => {
     setSelectedBgStyle({
-      backgroundImage: curPoolData ? `url(${curPoolData.character[optionValue].poolBgURLFromSimulator})` : InitialBgImag,
+      backgroundImage: curPoolData ? `url(${curPoolData.character[optionValue - 1].poolBgURLFromSimulator})` : InitialBgImag,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
@@ -53,22 +52,22 @@ const SimulatorFor1999 = () => {
       <div className='summon-pool-selector-container'>
         {curPoolData && curPoolData.character && (
           <select className='summon-pool-selector' value={optionValue} onChange={handleSelectOption}>
-            {curPoolData.character.map((char, index) => (
-              <option key={index} value={`${index}`}>
-                {char.poolName}
+            {curPoolData.character.map((chr, index) => (
+              <option key={index} value={`${chr.index}`}>
+                {chr.poolName}
               </option>
             ))}
           </select>
         )}
         <IoIosArrowDown className='select-arrow'/>
       </div>
-      <Link to={'/GachaDetails1999'} className='details-1999'>Details</Link>
+      <Link to={`/GachaDetails1999/${optionValue[optionValue.length - 1]}`} className='details-1999'>Details</Link>
       <div className='draw-container'>
-        <Link to={'/SingleGachaDisplay1999'} className='single-draw-1999'>
+        <Link to={`/SingleGachaDisplay1999/${optionValue[optionValue.length - 1]}`} className='single-draw-1999'>
           <div className='single-draw-icon'><img src={UnilogImg} width={'35px'} alt='unilog'/></div>
           Summon x1
         </Link>
-        <Link to={'/MultiGachaDisplay1999'} className='ten-draw-1999'>
+        <Link to={`/MultiGachaDisplay1999/${optionValue[optionValue.length - 1]}`} className='ten-draw-1999'>
           <div className='ten-draw-icon'><img src={UnilogImg} width={'35px'} alt='unilog'/></div>
           Summon x10
         </Link>

@@ -11,6 +11,7 @@ import LoginPage1999Icon from '../../Images/LoginPage1999Icon.webp';
 import LoginPageGenshinIcon from '../../Images/LoginPageGenshinIcon.webp';
 import RegisterErrorMessage from "../RegisterErrorMessage/RegisterErrorMessage.jsx";
 import { useNavigate } from "react-router-dom";
+import Contact from '../Contact/Contact.jsx';
 
 const RegisterOutlet = () => {
   const navigate = useNavigate();
@@ -107,6 +108,9 @@ const RegisterOutlet = () => {
         <div className="register-icon-container">
           <img src={LoginPage1999Icon} className="register-1999-icon"/>
           <img src={LoginPageGenshinIcon} className="register-genshin-icon"/>
+        </div>
+        <div className="register-contact">
+          <Contact/>
         </div>
     </form>
   )

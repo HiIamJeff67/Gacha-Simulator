@@ -36,7 +36,10 @@ const GameSwitchBar = () => {
             <img src={HomeIcon} width="50px" className='Home-icon'/>
         </Link>
         <Link to={'/SimulatorFor1999'}
-          className={`sw-bar-link ${((activeItem === "#simulatorfor1999") || (activeItem === "#gachadetails1999")) ? "active" : ""}`}
+          className={`sw-bar-link ${((activeItem === "#simulatorfor1999") || 
+                                     (activeItem === "#gachadetails1999/1") ||
+                                     (activeItem === "#gachadetails1999/2") ||
+                                     (activeItem === "#gachadetails1999/3")) ? "active" : ""}`}
           onClick={() => setActiveItem("#simulatorfor1999")}>
             <img src={ReverseIcon} width="50px" className='Reverse-icon'/>
         </Link>

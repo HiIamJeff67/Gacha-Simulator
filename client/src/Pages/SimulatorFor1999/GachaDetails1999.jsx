@@ -1,14 +1,15 @@
 import { useState } from 'react';
-
 import GachaRule1999 from '../../Components/GachaRule1999/GachaRule1999.jsx';
 import RateDetails1999 from '../../Components/RateDetails1999/RateDetails1999.jsx';
 import ProbabilityDisplay1999 from '../../Components/ProbabilityDisplay1999/ProbabilityDisplay1999.jsx';
 
 import './GachaDetails1999.css';
+import { useParams } from 'react-router-dom';
 
 const GachaDetails = () => {
   const [curInfo, setCurInfo] = useState("rules");
 
+  const { poolIndex } = useParams();
 
   return (
     <div className='gacha-details-container-1999'>

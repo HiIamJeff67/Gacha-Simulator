@@ -56,16 +56,27 @@
     }
 }
 @media (max-width: 600px) {
-    .contact-container {
-        z-index: var(--z_index_topest);
-        position: absolute;
+    /*.contact-container {
+        display: none;
+        /* z-index: var(--z_index_topest);
+        position: fixed;
         display: flex;
         flex-wrap: wrap;
         gap: 15px;
         width: 300px;
         left: 50%;
-        bottom: 50%;
-        transform: translate(-50%, 375%);   /* 可以幫我測試這裡嗎？ 當我把後面那項370%改成375%以上後contact-container就會不見 */
+        bottom: 50%; */
+        /*transform: translate(-50%, 375%);    可以幫我測試這裡嗎？ 當我把後面那項370%改成375%以上後contact-container就會不見
+    }*/
+    .contact-container {
+        /* border: var(--test_border_2); */
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        width: auto;
+    }
+    .gmail-link, .github-link {
+        padding: 2.5%;
     }
     .gmail-link a, .github-link a {
         font-size: 15px;

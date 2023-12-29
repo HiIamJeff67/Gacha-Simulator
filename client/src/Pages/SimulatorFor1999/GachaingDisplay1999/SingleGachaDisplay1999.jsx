@@ -5,13 +5,37 @@ import './SingleGachaDisplay1999.css';
 import UnilogImg from '../../../Images/unilog.png';
 import Star5Video from '../../../Videos/5-star.mp4';
 import testChrImg from '../../../Images/紅弩箭.png';
+import { useParams } from 'react-router-dom';
 
 const API_BASE = "http://localhost:8080";
 
 const SingleGachaDisplay1999 = () => {
+  const [curRateUpChr, setCurRateUpChr] = useState(null);
   const [rerenderKey, setRerenderKey] = useState(0);
   const [chrInfo, setChrInfo] = useState([]);
   const [videoState, setVideoState] = useState(false);
+
+  const { poolIndex } = useParams();
+
+  useEffect(() => {
+    
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/PoolData1999.json');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch JSON, status: ${response.status}`);
+        }
+
+        const jsonData = await response.json();
+        setCurRateUpChr(jsonData.character[poolIndex - 1].rateUpChr);
+        // console.log(jsonData.character[0].poolBgURLFromSimulator);
+      } catch (err) {
+        console.error(`Error during fetching curPoolData from public json file: ${err.message}`);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -29,7 +53,7 @@ const SingleGachaDisplay1999 = () => {
       .then(res => res.json())
       .then(data => {
         setChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
-        console.log(data);
+        // console.log(data);
       })
       .catch(error => {
         if (error === "AbortError") {
@@ -57,17 +81,24 @@ const SingleGachaDisplay1999 = () => {
               >
               <source src={Star5Video} type='video/mp4'></source>
             </video>)}
-        {!videoState && <div className='result-wrapper-1999'>
-          <div className={`single-result-chr-1999 ${videoState ? "" : "active"}`}>
-            <img className='single-chr-img' src={testChrImg} alt=''></img>
-            <div className='single-chr-star'><CharacterStarGenerator generateNum={chrInfo[1]}/></div>
-            <div className='single-chr-name'>{chrInfo[0]}</div>
-          </div>
-          <div to={'/SingleGachaDisplay1999'} className='single-draw-again-1999' onClick={summonAgain}>
-            <div className='single-draw-again-icon'><img src={UnilogImg} width={'35px'} alt='unilog'/></div>
-            Summon x1
-          </div>
-        </div>}
+        {!videoState &&
+          <div className='result-wrapper-1999'>
+            <div className={`single-result-chr-1999 ${videoState ? "" : "active"}`}>
+              <img className='single-chr-img' src={testChrImg} alt=''></img>
+              <div className='single-chr-star'><CharacterStarGenerator generateNum={chrInfo[1]}/></div>
+              <div className='single-chr-name'>
+                {(chrInfo[0] === "當期限定角色")
+                  ? curRateUpChr[0] : (chrInfo[0] === "當期限定角色2")
+                  ? curRateUpChr[1] : (chrInfo[0] === "當期限定角色3")
+                  ? curRateUpChr[2] : chrInfo[0] 
+                }
+                </div>
+            </div>
+            <div to={'/SingleGachaDisplay1999'} className='single-draw-again-1999' onClick={summonAgain}>
+              <div className='single-draw-again-icon'><img src={UnilogImg} width={'35px'} alt='unilog'/></div>
+              Summon x1
+            </div>
+          </div>}
       </div>
     </div>
   )

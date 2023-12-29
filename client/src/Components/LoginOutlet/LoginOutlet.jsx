@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import LoginPage1999Icon from '../../Images/LoginPage1999Icon.webp';
 import LoginPageGenshinIcon from '../../Images/LoginPageGenshinIcon.webp';
 import LoginErrorMessage from "../LoginErrorMessage/LoginErrorMessage.jsx";
+import Contact from "../Contact/Contact.jsx";
 
 const LoginOutlet = () => {
   const navigate = useNavigate();
@@ -58,6 +59,9 @@ const LoginOutlet = () => {
         <div className="login-icon-container">
           <img src={LoginPage1999Icon} className="login-1999-icon" alt="login-1999-icon"/>
           <img src={LoginPageGenshinIcon} className="login-genshin-icon" alt="login-genshin-icon"/>
+        </div>
+        <div className="login-contact">
+          <Contact/>
         </div>
     </form>
   )

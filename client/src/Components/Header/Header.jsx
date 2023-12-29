@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header>
       <Link to='/' className='logo'>Gacha Simulator</Link>
-      <Contact/>
+      <span className='header-contact'><Contact/></span>
       <nav>
         {!currentUser && (<><Link to='/login' className='login-reg'>Login</Link>
                           <Link to='/Register' className='login-reg'>Register</Link></>)}

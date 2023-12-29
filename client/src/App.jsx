@@ -30,9 +30,9 @@ const App = () => {
         <Route path={'/login'} element={<LoginPage/>}/>
         <Route path={'/register'} element={<RegisterPage/>}/>
 
-        <Route path={'/GachaDetails1999'} element={<GachaDetails1999/>}/>
-        <Route path={'/SingleGachaDisplay1999'} element={<SingleGachaDisplay1999/>}/>
-        <Route path={'/MultiGachaDisplay1999'} element={<MultiGachaDisplay1999/>}/>
+        <Route path={'/GachaDetails1999/:poolIndex'} element={<GachaDetails1999/>}/>
+        <Route path={'/SingleGachaDisplay1999/:poolIndex'} element={<SingleGachaDisplay1999/>}/>
+        <Route path={'/MultiGachaDisplay1999/:poolIndex'} element={<MultiGachaDisplay1999/>}/>
 
         <Route path={'/GachaDetailsGenshin'} element={<GachaDetailsGenshin/>}/>
         <Route path={'/SingleGachaDisplayGenshin'} element={<SingleGachaDisplayGenshin/>}/>

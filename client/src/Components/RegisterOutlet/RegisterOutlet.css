@@ -100,6 +100,10 @@
     width: 90px;
 }
 
+.register-contact {
+    display: none;
+}
+
 /* =================== RWD =================== */
 
 @media (max-width: 1380px) {
@@ -209,6 +213,10 @@
     }
     .register-1999-icon, .register-genshin-icon {
         width: 90px;
+    }
+    .register-contact {
+        display: block;
+        transform: translateY(30%);
     }
 }
 @media (max-width: 375px) {

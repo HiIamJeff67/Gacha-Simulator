@@ -114,6 +114,9 @@ nav {
         width: 25px;
         height: 25px;
     }
+    .header-contact {
+        display: none;
+    }
 }
 @media (max-width: 375px) {
     header {
