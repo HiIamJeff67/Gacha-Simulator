@@ -165,6 +165,61 @@ app.get('/getGuarantee4star', function _callee3(req, res) {
     }
   });
 });
+app.get('/getGuarantee6star', function _callee4(req, res) {
+  var detector, randomBoolean, randomNum, randomChr;
+  return regeneratorRuntime.async(function _callee4$(_context4) {
+    while (1) {
+      switch (_context4.prev = _context4.next) {
+        case 0:
+          detector = Math.random();
+          randomBoolean = detector < 0.5 ? 1 : 0;
+          randomNum = randomBoolean === 0 ? Math.random() * 1.3636363 : 1.4; // use randomNum 1.4 to fetch the rateUpChr
+
+          console.log("The random guarantee 6 star item is : ".concat(randomNum));
+          _context4.next = 6;
+          return regeneratorRuntime.awrap(Chr.findOne({
+            rateEnd: {
+              $gte: randomNum
+            },
+            rateStart: {
+              $lte: randomNum
+            }
+          }));
+
+        case 6:
+          randomChr = _context4.sent;
+          res.json(randomChr);
+
+        case 8:
+        case "end":
+          return _context4.stop();
+      }
+    }
+  });
+});
+app.get('/getGuaranteeRateUp6star', function _callee5(req, res) {
+  var returnChr;
+  return regeneratorRuntime.async(function _callee5$(_context5) {
+    while (1) {
+      switch (_context5.prev = _context5.next) {
+        case 0:
+          _context5.next = 2;
+          return regeneratorRuntime.awrap(Chr.findOne({
+            rateUp: true,
+            star: 6
+          }));
+
+        case 2:
+          returnChr = _context5.sent;
+          res.json(returnChr);
+
+        case 4:
+        case "end":
+          return _context5.stop();
+      }
+    }
+  });
+});
 var PORT = process.env.PORT || 8080;
 app.listen(PORT, function () {
   return console.log("Server started on PORT : ".concat(PORT));

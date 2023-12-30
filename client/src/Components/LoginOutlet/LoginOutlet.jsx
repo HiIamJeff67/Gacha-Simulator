@@ -16,9 +16,9 @@ const LoginOutlet = () => {
   const [error, setError] = useState("");
 
   const handleSubmit = async function(ev) {
-    ev.preventDefault();
-    const email = ev.target[0].value;
-    const password = ev.target[1].value;
+    if (ev) ev.preventDefault();
+    const email = ev?.target[0]?.value;
+    const password = ev?.target[1]?.value;
     
     setError("loading");
 
@@ -27,10 +27,11 @@ const LoginOutlet = () => {
         navigate('/');
         setError("");
       }).catch((err) => {
-        setError("wrongPassword");
+        setError("wrongPasswordOrWrongAccount");
         ev.target[1].value = "";
       });
     } catch (err) {
+      console.log(err);
       setError("unknownError");
     }
   }
@@ -39,10 +40,10 @@ const LoginOutlet = () => {
     <form className="login-form" onSubmit={handleSubmit}>
         <h1 className="login-chinese">登入</h1>
         <div className="input-account-container">
-          <input type="text" placeholder="account@gmail.com" className="login-input input-account"></input>
+          <input type="text" placeholder="account@gmail.com" className="login-input input-account" required></input>
         </div>
         <div className="input-password-container">
-          <input type={(eyeState) === "enable" ? "password" : "text"} placeholder="password" className="login-input input-password"></input>
+          <input type={(eyeState) === "enable" ? "password" : "text"} placeholder="password" className="login-input input-password" required></input>
           <div className="eye-container">
             <a href="#" className={`little-eye ${(eyeState === "enable") ? "" : "hide"}`} onClick={() => {setEyeState("disable")}}>
               <FaEye/>

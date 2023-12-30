@@ -22,7 +22,7 @@ const RegisterOutlet = () => {
 
   const handleSubmit = async function(ev) {
     ev.preventDefault();
-    const displayName = ev.target[0].value;
+    const displayName = (ev.target[0].value === null) ? "anonymous" : ev.target[0].value;
     const email = ev.target[1].value;
     const password = ev.target[2].value;
     const confirmPassword = ev.target[3].value;
@@ -61,22 +61,30 @@ const RegisterOutlet = () => {
           }
         });
       });
+
+      await setDoc(doc(db, "userPulls", res.user.uid), { pulls : [], guarantee : 0});
+
     } catch (err) {
-      setError("passwordLengthError");
+      console.log(err);
+      setError((err.code === "auth/email-already-in-use") 
+                              ? "accountUsed" 
+                              : "passwordLengthError");
     }
   }
+
+  
 
   return (
     <form className="register-form" onSubmit={handleSubmit}>
         <h1 className="register-chinese">註冊</h1>
         <div className="input-displayname">
-          <input type="text" placeholder="username" className="register-input input-displayname"></input>
+          <input type="text" placeholder="username" className="register-input input-displayname" required></input>
         </div>
         <div className="input-account-container">
-          <input type="text" placeholder="account@gmail.com" className="register-input input-account"></input>
+          <input type="text" placeholder="account@gmail.com" className="register-input input-account" required></input>
         </div>
         <div className="input-password-container">
-          <input type={(eyeState_1) === "enable" ? "password" : "text"} placeholder="password" className="register-input input-password"></input>
+          <input type={(eyeState_1) === "enable" ? "password" : "text"} placeholder="password" className="register-input input-password" required></input>
           <div className="eye-container">
             <a href="#" className={`little-eye ${(eyeState_1 === "enable") ? "" : "hide"}`} onClick={() => {setEyeState_1("disable")}}>
               <FaEye/>
@@ -89,7 +97,7 @@ const RegisterOutlet = () => {
           </div>
         </div>
         <div className="input-password-container">
-          <input type={(eyeState_2) === "enable" ? "password" : "text"} placeholder="confirm password" className="register-input input-password"></input>
+          <input type={(eyeState_2) === "enable" ? "password" : "text"} placeholder="confirm password" className="register-input input-password" required></input>
           <div className="eye-container">
             <a href="#" className={`little-eye-confirm ${(eyeState_2 === "enable") ? "" : "hide"}`} onClick={() => {setEyeState_2("disable")}}>
               <FaEye/>

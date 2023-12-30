@@ -17,10 +17,6 @@ import SingleGachaDisplayGenshin from './Pages/SimulatorForGenshin/GachaingDispl
 import MultiGachaDisplayGenshin from './Pages/SimulatorForGenshin/GachaingDisplayGenshin/MultiGachaDisplayGenshin.jsx';
 
 const App = () => {
-  const {currentUser} = useContext(AuthContext);
-
-  console.log(currentUser);
-  
   return (
     <Routes>
       <Route path='/' element={<Layout/>}>

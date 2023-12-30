@@ -11,6 +11,9 @@ const RegisterErrorMessage = (props) => {
         {(props.errorType === "passwordNotPair") && <><span className='error-message'>Password is not eqaul to the comfirm password. Please try again.</span>
             <Link to='/Register' className='error-confirm' onClick={() => {props.setError("")}}>OK</Link></>}
 
+        {(props.errorType === "accountUsed") && <><span className='error-message'>This account has already been used! Please sign in with it.</span>
+            <Link to='/Login' className='error-confirm' onClick={() => {props.setError("")}}>OK</Link></>}
+
         {(props.errorType === "unknownError") && <><span className='error-message'>Unknown Error. Please try refresh the page again.</span>
             <Link to='/Register' className='error-confirm' onClick={() => {props.setError("")}}>OK</Link></>}  
 

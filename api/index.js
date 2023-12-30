@@ -54,5 +54,19 @@ app.get('/getGuarantee4star', async(req, res) => {  // every ten summons(once te
     res.json(randomChr);
 })
 
+app.get('/getGuarantee6star', async(req, res) => {
+    const detector = Math.random();
+    const randomBoolean = (detector < 0.5) ? 1 : 0;
+    let randomNum = (randomBoolean === 0) ? Math.random() * 1.3636363 : 1.4;    // use randomNum 1.4 to fetch the rateUpChr
+    console.log(`The random guarantee 6 star item is : ${randomNum}`);
+    const randomChr = await Chr.findOne({ rateEnd : { $gte : randomNum }, rateStart : { $lte : randomNum }});
+    res.json(randomChr);
+})
+
+app.get('/getGuaranteeRateUp6star', async(req, res) => {
+    const returnChr = await Chr.findOne({ rateUp : true, star : 6 });
+    res.json(returnChr);
+})
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server started on PORT : ${PORT}`));

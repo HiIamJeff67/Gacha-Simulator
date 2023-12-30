@@ -12,6 +12,10 @@ const LoginErrorMessage = (props) => {
             <><span className='error-message'>This account haven't register! Please register first<br/>(Click the OK button to go to register page).</span>
                 <Link to='/Register' className='error-confirm' onClick={() => {props.setError("")}}>OK</Link></>}
 
+        {(props.errorType === "wrongPasswordOrWrongAccount") && 
+            <><span className='error-message'>Wrong account or wrong password.<br/>(Click the OK button to try it again).</span>
+                <Link to='/Login' className='error-confirm' onClick={() => {props.setError("")}}>OK</Link></>}
+
         {(props.errorType === "unknownError") && 
             <><span className='error-message'>Unknown Error. Please try refresh the page again.</span>
                 <Link to='/Login' className='error-confirm' onClick={() => {props.setError("")}}>OK</Link></>}  

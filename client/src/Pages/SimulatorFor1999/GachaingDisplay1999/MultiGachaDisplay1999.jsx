@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthContext';
 import CharacterStarGenerator from './CharacterStarGenerator';
 import './MultiGachaDisplay1999.css';
 
@@ -8,9 +10,12 @@ import testChrImg from '../../../Images/紅弩箭.png';
 import { useParams } from 'react-router-dom';
 
 const API_BASE = "http://localhost:8080";
-const _SUMMONTiMES = 10;
+const _SUMMONTIMES = 10;
 
 const MultiGachaDisplay1999 = () => {
+  const {currentUser} = useContext(AuthContext);
+
+  const navigate = useNavigate();
   const [rerenderKey, setRerenderKey] = useState(0);  // to prevent the user fresh the page
   const [tempChrInfo, setTempChrInfo] = useState([]);
   const [chrInfos, setChrInfos] = useState([]);
@@ -21,7 +26,11 @@ const MultiGachaDisplay1999 = () => {
   const { poolIndex } = useParams();
 
   useEffect(() => {
-    
+    if (currentUser === null) {
+      navigate('/Login');
+      return;
+    }
+
     const fetchData = async () => {
       try {
         const response = await fetch('/PoolData1999.json');
@@ -51,7 +60,7 @@ const MultiGachaDisplay1999 = () => {
 
     const abortController = new AbortController();
 
-    getChrs(abortController)
+    getChrs(abortController);
     guaranteeDetRef.current = 0;
 
     return () => {
@@ -61,7 +70,7 @@ const MultiGachaDisplay1999 = () => {
 
   const getChrs = async function (abortController) {
     try {
-      for (let _ = 0; _ < _SUMMONTiMES; _++) {
+      for (let _ = 0; _ < _SUMMONTIMES; _++) {
         if (guaranteeDetRef.current < 9) {
           const response = await fetch(API_BASE + "/randomSelectOne", { signal: abortController.signal });
           const data = await response.json();
@@ -103,6 +112,7 @@ const MultiGachaDisplay1999 = () => {
               muted
               autoPlay
               onEnded={() => setVideoState(false)}
+              onClick={() => setVideoState(false)}
               >
               <source src={Star5Video} type='video/mp4'></source>
             </video>)}
@@ -116,7 +126,7 @@ const MultiGachaDisplay1999 = () => {
               return (
                 <div className={`ten-result-chr-1999 
                                  ${videoState ? "" : "active"} 
-                                 ${(index / ((_SUMMONTiMES / 2) + 1) < 1) ? "result-chr-top" : "result-chr-bottom"}`} 
+                                 ${(index / ((_SUMMONTIMES / 2) + 1) < 1) ? "result-chr-top" : "result-chr-bottom"}`} 
                      key={index}>
                   <img className='ten-chr-img' src={testChrImg} alt=''></img>
                   <div className='ten-chr-star'>

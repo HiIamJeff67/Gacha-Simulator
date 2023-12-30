@@ -1,24 +1,48 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { updateDoc, doc, arrayUnion, getDoc, Timestamp } from 'firebase/firestore';
+import { db } from '../../../firebase.js';
+import { AuthContext } from '../../../Context/AuthContext';
 import CharacterStarGenerator from './CharacterStarGenerator';
 import './SingleGachaDisplay1999.css';
 
 import UnilogImg from '../../../Images/unilog.png';
-import Star5Video from '../../../Videos/5-star.mp4';
 import testChrImg from '../../../Images/紅弩箭.png';
-import { useParams } from 'react-router-dom';
+import Star5Video from '../../../Videos/5-star.mp4';
 
 const API_BASE = "http://localhost:8080";
 
 const SingleGachaDisplay1999 = () => {
-  const [curRateUpChr, setCurRateUpChr] = useState(null);
+  const {currentUser} = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const [curRateUpChr, setCurRateUpChr] = useState(null); // from /public/PoolData1999
   const [rerenderKey, setRerenderKey] = useState(0);
-  const [chrInfo, setChrInfo] = useState([]);
-  const [videoState, setVideoState] = useState(false);
+  const [chrInfo, setChrInfo] = useState([]); // from mongodb when summoning
+  const [videoState, setVideoState] = useState(true);
+  const [fetchingGuaranteeDone, setFetchingGuaranteeDone] = useState(false);
+  const currentUserGuarantee = useRef(0);
 
   const { poolIndex } = useParams();
 
   useEffect(() => {
-    
+    if (currentUser === null) {
+      // show the errorMessage(with component)
+      navigate('/Login');
+      return;
+    }
+
+    const initialUserGuarantee = async () => {
+      getDoc(doc(db, "userPulls", currentUser.uid))
+        .then((res) => {
+          if (res.exists()) {
+            currentUserGuarantee.current = parseInt(res.data().guarantee);
+            setFetchingGuaranteeDone(true);
+            console.log("current", currentUserGuarantee.current);
+          }
+        })
+    }
+ 
     const fetchData = async () => {
       try {
         const response = await fetch('/PoolData1999.json');
@@ -34,35 +58,108 @@ const SingleGachaDisplay1999 = () => {
       }
     };
 
-    fetchData();
+    const renderProcess = async () => {
+      await fetchData();
+      await initialUserGuarantee();
+    }
+    renderProcess();
   }, []);
 
   useEffect(() => {
+    if (!fetchingGuaranteeDone) return
     const abortController = new AbortController();
 
     setVideoState(true);
-    getChrs(abortController);
+    const fetchDataAndGuarantees = async () => {
+      if (currentUserGuarantee.current === 69) {
+        await getGuaranteeChrs(abortController);
+      } else if (currentUserGuarantee.current === 139) {
+        await getGuaranteeRateUpChr(abortController);
+      } else {
+        await getChrs(abortController);
+      }
+    };
+  
+    fetchDataAndGuarantees();
+    // console.log(`outer chrInfo = ${chrInfo}`);
+    // console.log(`outer g = ${currentUserGuarantee}`);
 
     return () => {
       abortController.abort();
     };
-  }, [rerenderKey]);
+  }, [rerenderKey, fetchingGuaranteeDone]);
 
-  const getChrs = function (abortController) {
-    fetch(API_BASE + "/randomSelectOne", { signal: abortController.signal })
-      .then(res => res.json())
-      .then(data => {
-        setChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
-        // console.log(data);
-      })
-      .catch(error => {
-        if (error === "AbortError") {
-          console.log(`Use Abort to debug twice fetch : ${error}`);
-        }
-        else {
-          console.log(`Error during summoning : ${error}`);
-        }
-      });
+  const getChrs = async function (abortController) {
+    try {
+      const response = await fetch(API_BASE + "/randomSelectOne", { signal: abortController.signal });
+      const data = await response.json();
+      currentUserGuarantee.current = (data.star === 6 && data.rateUp) ? 0 : currentUserGuarantee.current + 1;
+      setChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
+      
+      // storeUserPulls(currentUserGuarantee.current, data.name, data.star);
+      // console.log(`/randomSelectOne get :${data.name}/${data.star}, g = ${currentUserGuarantee.current}`);
+    } catch (error) {
+      if (error.name === "AbortError") {
+        console.log("Fetch aborted:", error.message);
+      } else {
+        console.log("Error during summoning:", error.message);
+      }
+    }
+  }
+  useEffect(() => {
+    if (chrInfo.length > 0 && fetchingGuaranteeDone) {
+      storeUserPulls(currentUserGuarantee.current, chrInfo[0], chrInfo[1]);
+      console.log(`/randomSelectOne get :${chrInfo[0]}/${chrInfo[1]}, g = ${currentUserGuarantee.current}`);
+    }
+  }, [currentUserGuarantee.current]);
+
+  const getGuaranteeChrs = async function (abortController) {
+    try {
+      const response = await fetch(API_BASE + "/getGuarantee6star", { signal: abortController.signal });
+      const data = await response.json();
+  
+      currentUserGuarantee.current = (data.rateUp) ? 0 : currentUserGuarantee.current + 1;
+      setChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
+      
+    } catch (error) {
+      if (error.name === "AbortError") {
+        console.log("Fetch aborted:", error.message);
+      } else {
+        console.log("Error during summoning:", error.message);
+      }
+    }
+  }
+
+  const getGuaranteeRateUpChr = async function (abortController) {
+    try {
+      const response = await fetch(API_BASE + "/getGuaranteeRateUp6star", { signal: abortController.signal });
+      const data = await response.json();
+      
+      currentUserGuarantee.current = 0;
+      setChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
+    } catch (error) {
+      if (error.name === "AbortError") {
+        console.log("Fetch aborted:", error.message);
+      } else {
+        console.log("Error during summoning:", error.message);
+      }
+    }
+  }
+
+  
+
+  const storeUserPulls = async function(curGuarantees, curChrName, curChrStar) {    
+    await updateDoc(doc(db, "userPulls", currentUser.uid), {
+      pulls: arrayUnion({
+        name: (curChrName === "當期限定角色")
+              ? curRateUpChr[0] : (curChrName === "當期限定角色2")
+              ? curRateUpChr[1] : (curChrName === "當期限定角色3")
+              ? curRateUpChr[2] : curChrName,
+        star: curChrStar,
+        data: Timestamp.now(),
+      }),
+      guarantee: curGuarantees,
+    })
   }
 
   const summonAgain = function() {  // use useState to lead the useEffect to make a rerender
@@ -77,7 +174,9 @@ const SingleGachaDisplay1999 = () => {
               className='video-1999'
               muted
               autoPlay
+              playsInline
               onEnded={() => setVideoState(false)}
+              onClick={() => setVideoState(false)}
               >
               <source src={Star5Video} type='video/mp4'></source>
             </video>)}
@@ -90,7 +189,7 @@ const SingleGachaDisplay1999 = () => {
                 {(chrInfo[0] === "當期限定角色")
                   ? curRateUpChr[0] : (chrInfo[0] === "當期限定角色2")
                   ? curRateUpChr[1] : (chrInfo[0] === "當期限定角色3")
-                  ? curRateUpChr[2] : chrInfo[0] 
+                  ? curRateUpChr[2] : chrInfo[0]
                 }
                 </div>
             </div>
