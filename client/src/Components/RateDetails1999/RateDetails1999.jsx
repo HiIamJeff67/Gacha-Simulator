@@ -15,7 +15,7 @@ const RateDetails1999 = () => {
           </div>
         </div>
         <div className='star-content'>
-          槲寄生｜紅弩箭｜未繡鎧｜蘇芙比｜星銻｜百夫長｜泥鯭的士｜兔毛手袋｜溫妮佛雷德｜遠旅｜限定角色放置於此
+          槲寄生｜紅弩箭｜未繡鎧｜蘇芙比｜星銻｜百夫長｜泥鯭的士｜兔毛手袋｜溫妮佛雷德｜遠旅｜該池限定角色
         </div>
       </div>
       <div className='all-chr chr-5-star'>
