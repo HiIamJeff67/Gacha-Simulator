@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { updateDoc, doc, arrayUnion, getDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../../../firebase.js';
 import { AuthContext } from '../../../Context/AuthContext';
-import CharacterStarGenerator from './CharacterStarGenerator';
+import CharacterStarGenerator from './CharacterStarGenerator.jsx';
 import './SingleGachaDisplay1999.css';
 
 import UnilogImg from '../../../Images/unilog.png';
@@ -24,6 +24,15 @@ const SingleGachaDisplay1999 = () => {
   const currentUserGuarantee = useRef(0);
 
   const { poolIndex } = useParams();
+  const [userDeviceMode, setUserDeviceMode] = useState("");
+  useEffect(() => {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      setUserDeviceMode("Mobile");
+    } else {
+      setUserDeviceMode("PC");
+    }
+    console.log(userDeviceMode);
+  }, [rerenderKey]);
 
   const chr1999ImageContext = require.context('../../../Images/1999ImgSrc', false, /\.(webp)$/);
 
@@ -41,7 +50,7 @@ const SingleGachaDisplay1999 = () => {
             if (res.exists()) {
               currentUserGuarantee.current = parseInt(res.data().guarantee);
               setFetchingGuaranteeDone(true);
-              console.log("current", currentUserGuarantee.current);
+              // console.log("current", currentUserGuarantee.current);
             }
           })
       } catch (err) {
@@ -58,7 +67,7 @@ const SingleGachaDisplay1999 = () => {
 
         const jsonData = await response.json();
         setCurRateUpChr(jsonData.character[poolIndex - 1].rateUpChr);
-        // console.log(jsonData.character[0].poolBgURLFromSimulator);
+        console.log(jsonData.character[0].poolBgURLFromSimulator);
       } catch (err) {
         console.error(`Error during fetching curPoolData from public json file: ${err.message}`);
       }
@@ -115,7 +124,7 @@ const SingleGachaDisplay1999 = () => {
   useEffect(() => {
     if (chrInfo.length > 0 && fetchingGuaranteeDone) {
       storeUserPulls(currentUserGuarantee.current, chrInfo[0], chrInfo[1]);
-      console.log(`/randomSelectOne get :${chrInfo[0]}/${chrInfo[1]}, g = ${currentUserGuarantee.current}`);
+      // console.log(`/randomSelectOne get :${chrInfo[0]}/${chrInfo[1]}, g = ${currentUserGuarantee.current}`);
     }
   }, [currentUserGuarantee.current]);
 
@@ -164,6 +173,9 @@ const SingleGachaDisplay1999 = () => {
       }),
       guarantee: curGuarantees,
     })
+    if (userDeviceMode !== "PC") {
+      navigate('/SimulatorFor1999');
+    }
   }
 
   const summonAgain = function() {  // use useState to lead the useEffect to make a rerender
@@ -173,7 +185,7 @@ const SingleGachaDisplay1999 = () => {
   return (
     <div className={`single-summon-container-1999 ${videoState ? "" : "video-end"}`}>
       <div className='result-container-1999'>
-        {videoState && (
+        {videoState && (userDeviceMode === "PC") && (
             <video 
               className='video-1999'
               muted
@@ -184,7 +196,7 @@ const SingleGachaDisplay1999 = () => {
               >
               <source src={Star5Video} type='video/mp4'></source>
             </video>)}
-        {(!videoState && chrInfo) &&
+        {(!videoState && chrInfo) && (userDeviceMode === "PC") &&
           <div className='result-wrapper-1999'>
             <div className={`single-result-chr-1999 ${videoState ? "" : "active"}`}>
               <img className='single-chr-img' src={chr1999ImageContext(`./${((chrInfo[0] === "當期限定角色")

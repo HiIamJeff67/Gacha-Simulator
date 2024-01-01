@@ -15,7 +15,7 @@ const RegisterPage = () => {
     if (currentUser) {
       navigate('/');
     }
-  },[]);
+  },[currentUser]);
 
   return (
     <div className="register-container">

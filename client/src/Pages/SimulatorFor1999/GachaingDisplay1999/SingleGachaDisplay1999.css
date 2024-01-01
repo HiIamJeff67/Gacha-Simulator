@@ -61,7 +61,7 @@
     color: white;
 }
 .single-result-chr-1999.active {
-    animation: show-result var(--transition_summon_animation) ease-in-out 1 forwards;
+    animation: show-result-1999 var(--transition_summon_animation) ease-in-out 1 forwards;
 }
 
 .single-result-chr-1999 .single-chr-img {
@@ -102,7 +102,7 @@
     transform: translateY(50%);
 }
 
-@keyframes show-result {
+@keyframes show-result-1999 {
     0% {
         transform: translateY(-100%);
     }

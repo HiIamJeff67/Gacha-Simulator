@@ -31,6 +31,7 @@ body::-webkit-scrollbar {
     --text_color_1: #ff7700;
     --text_color_2_shader: #900C3F;
     --draw_bg_1999: hsl(20, 84%, 50%);
+    --draw_bg_genshin: yellow;
     --z_index_bg_floor: -99;
     --z_index_bg_img: 0;
     --z_index_outer_container: 10;

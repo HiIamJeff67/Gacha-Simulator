@@ -28,6 +28,16 @@ const MultiGachaDisplay1999 = () => {
   const currentUserGuarantee = useRef(0);
 
   const { poolIndex } = useParams();
+  const [userDeviceMode, setUserDeviceMode] = useState("");
+
+  useEffect(() => {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      setUserDeviceMode("Mobile");
+    } else {
+      setUserDeviceMode("PC");
+    }
+    console.log(userDeviceMode);
+  }, [rerenderKey]);
 
   const chr1999ImageContext = require.context('../../../Images/1999ImgSrc', false, /\.(webp)$/);
 
@@ -44,7 +54,7 @@ const MultiGachaDisplay1999 = () => {
             if (res.exists()) {
               currentUserGuarantee.current = parseInt(res.data().guarantee);
               setFetchingGuaranteeDone(true);
-              console.log("current", currentUserGuarantee.current);
+              // console.log("current", currentUserGuarantee.current);
             }
           })
       } catch (err) {
@@ -202,6 +212,9 @@ const MultiGachaDisplay1999 = () => {
       }),
       guarantee: curGuarantees,
     })
+    if (userDeviceMode !== "PC") {
+      navigate('/SimulatorFor1999');
+    }
   }
   
 
@@ -212,7 +225,7 @@ const MultiGachaDisplay1999 = () => {
   return (
     <div className={`ten-summon-container-1999 ${videoState ? "" : "video-end"}`}>
       <div className='result-container-1999'>
-        {videoState && (
+        {videoState && (userDeviceMode === "PC") && (
             <video
               className='video-1999'
               muted
@@ -222,7 +235,7 @@ const MultiGachaDisplay1999 = () => {
               >
               <source src={Star5Video} type='video/mp4'></source>
             </video>)}
-        {(!videoState && chrInfos) &&
+        {(!videoState && chrInfos) && (userDeviceMode === "PC") &&
         <div className='result-wrapper-1999'>
           <div className='result-chr-wrapper-1999'>
             {chrInfos.map((chrInfo, index) => {

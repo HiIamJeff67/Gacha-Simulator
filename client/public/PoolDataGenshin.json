@@ -1,0 +1,22 @@
+{
+    "character": [
+        {
+            "index": 1,
+            "poolName": "The Heron's Court",
+            "poolBgURLFromSimulator": "https://i.pinimg.com/originals/ef/1b/98/ef1b98a92237d51c6f3e4b7fa955f84b.jpg",
+            "rateUpChr": ["神里綾華", "羅莎莉亞", "芭芭拉", "諾艾爾"]
+        },
+        {
+            "index": 2,
+            "poolName": "Balled in Goblets",
+            "poolBgURLFromSimulator": "https://i.pinimg.com/originals/d5/23/4f/d5234f96d1363cdedc1ab0bb5e1f52a5.jpg",
+            "rateUpChr": ["溫迪", "芭芭拉", "香菱", "菲謝爾"]
+        },
+        {
+            "index": 3,
+            "poolName": "Born of Ocean",
+            "poolBgURLFromSimulator": "https://i.pinimg.com/originals/cc/12/cb/cc12cbab021d9c5be085d59c9aef9088.jpg",
+            "rateUpChr": ["優菈", "辛焱", "行秋", "北斗"]
+        }
+    ]
+}

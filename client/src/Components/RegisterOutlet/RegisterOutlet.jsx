@@ -62,7 +62,10 @@ const RegisterOutlet = () => {
         });
       });
 
+      // prepare the database for recording user's pulls in 1999
       await setDoc(doc(db, "userPulls1999", res.user.uid), { pulls : [], guarantee : 0});
+      // prepare the database for recording user's pulls in genshin
+      await setDoc(doc(db, "userPullsGenshin", res.user.uid), {pulls: [], guarantee : 0});
 
     } catch (err) {
       console.log(err);

@@ -3,6 +3,7 @@
 }
 
 .simulator-container-genshin {
+    background: url('../../Images/InitialBgImgGenshin.jpeg');
     border: none;  /* 我發現原神的抽卡介面沒邊框(?! */
     padding: 5px;
     z-index: var(--z_index_outer_container);
@@ -13,7 +14,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -70%);
-    background-color: green;
 }
 select {
     outline: none;

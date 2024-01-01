@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AuthContext } from './Context/AuthContext.js';
 import './App.css';
@@ -35,8 +35,8 @@ const App = () => {
         <Route path={'/MultiGachaDisplay1999/:poolIndex'} element={currentUser && <MultiGachaDisplay1999/>}/>
 
         <Route path={'/GachaDetailsGenshin'} element={<GachaDetailsGenshin/>}/>
-        <Route path={'/SingleGachaDisplayGenshin'} element={currentUser && <SingleGachaDisplayGenshin/>}/>
-        <Route path={'/MultiGachaDisplayGenshin'} element={currentUser && <MultiGachaDisplayGenshin/>}/>
+        <Route path={'/SingleGachaDisplayGenshin/:poolIndex'} element={currentUser && <SingleGachaDisplayGenshin/>}/>
+        <Route path={'/MultiGachaDisplayGenshin/:poolIndex'} element={currentUser && <MultiGachaDisplayGenshin/>}/>
       </Route>
     </Routes>
   )

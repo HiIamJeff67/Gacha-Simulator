@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext.js';
-import { getDoc, setDoc, updateDoc, doc, arrayUnion } from 'firebase/firestore';
+import { getDoc, setDoc, doc } from 'firebase/firestore';
 import { db } from '../../firebase.js';
 import { IoIosArrowDown } from 'react-icons/io';
 import UnilogImg from '../../Images/unilog.png';
 import './SimulatorFor1999.css';
-import InitialBgImag from '../../Images/InitialBgImg1999.jpg';
+import InitialBgImg from '../../Images/InitialBgImg1999.jpg';
 
 const SimulatorFor1999 = () => {
   const {currentUser} = useContext(AuthContext);
@@ -43,7 +43,7 @@ const SimulatorFor1999 = () => {
     setSelectedBgStyle({
       backgroundImage: (curPoolData?.character[optionValue - 1]?.poolBgURLFromSimulator) 
                         ? `url(${curPoolData.character[optionValue - 1].poolBgURLFromSimulator})` 
-                        : InitialBgImag,
+                        : InitialBgImg,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
@@ -61,11 +61,11 @@ const SimulatorFor1999 = () => {
       navigate('/Login');
       return;
     }
-    const response = await getDoc(doc(db, "userPulls", currentUser.uid));
+    const response = await getDoc(doc(db, "userPulls1999", currentUser.uid));
 
     if (!response.exists()) {
       // create a pullsArray to store all the data during summoning
-      await setDoc(doc(db, "userPulls", currentUser.uid), { pulls : [], guarantee : 0});
+      await setDoc(doc(db, "userPulls1999", currentUser.uid), { pulls : [], guarantee : 0});
     }
   }
 
@@ -85,13 +85,17 @@ const SimulatorFor1999 = () => {
       </div>
       <Link to={`/GachaDetails1999/${optionValue[optionValue.length - 1]}`} className='details-1999'>Details</Link>
       <div className='draw-container'>
-        <Link to={`/SingleGachaDisplay1999/${optionValue[optionValue.length - 1]}`} className='single-draw-1999' onClick={checkAndInitialUserPulls}>
-          <div className='single-draw-icon'><img src={UnilogImg} width={'35px'} alt='unilog'/></div>
-          Summon x1
+        <Link to={`/SingleGachaDisplay1999/${optionValue[optionValue.length - 1]}`} 
+          className='single-draw-1999' 
+          onClick={checkAndInitialUserPulls}>
+            <div className='single-draw-icon'><img src={UnilogImg} width={'35px'} alt='unilog'/></div>
+            Summon x1
         </Link>
-        <Link to={`/MultiGachaDisplay1999/${optionValue[optionValue.length - 1]}`} className='ten-draw-1999' onClick={checkAndInitialUserPulls}>
-          <div className='ten-draw-icon'><img src={UnilogImg} width={'35px'} alt='unilog'/></div>
-          Summon x10
+        <Link to={`/MultiGachaDisplay1999/${optionValue[optionValue.length - 1]}`} 
+          className='ten-draw-1999' 
+          onClick={checkAndInitialUserPulls}>
+            <div className='ten-draw-icon'><img src={UnilogImg} width={'35px'} alt='unilog'/></div>
+            Summon x10
         </Link>
       </div>
     </div>
