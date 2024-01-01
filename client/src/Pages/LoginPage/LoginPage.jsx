@@ -1,10 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext.js';
 import logo from '../../Images/logo.png'
 import LoginOutlet from '../../Components/LoginOutlet/LoginOutlet';
 import './LoginPage.css'
 
 const LoginPage = () => {
+  const {currentUser} = useContext(AuthContext);
+
+  const navigate = useNavigate();
   const [bookState, setBookState] = useState("");
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/');
+    }
+  },[]);
 
   return (
     <div className="login-container">

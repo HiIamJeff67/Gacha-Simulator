@@ -62,7 +62,7 @@ const RegisterOutlet = () => {
         });
       });
 
-      await setDoc(doc(db, "userPulls", res.user.uid), { pulls : [], guarantee : 0});
+      await setDoc(doc(db, "userPulls1999", res.user.uid), { pulls : [], guarantee : 0});
 
     } catch (err) {
       console.log(err);

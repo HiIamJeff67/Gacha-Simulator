@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase.js';
 import { AuthContext } from '../../Context/AuthContext.js';
@@ -9,6 +9,7 @@ import Contact from '../Contact/Contact.jsx';
 
 const Header = () => {
   const {currentUser} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   return (
     <header>
@@ -17,8 +18,19 @@ const Header = () => {
       <nav>
         {!currentUser && (<><Link to='/login' className='login-reg'>Login</Link>
                           <Link to='/Register' className='login-reg'>Register</Link></>)}
-        {currentUser && (<><div className='login-reg' onClick={() => {signOut(auth)}}>Logout</div>
-                            <div className='login-reg user-account'>
+        {currentUser && (<><div 
+                              className='login-reg'
+                              onClick={() => {
+                                signOut(auth)
+                                navigate('/');
+                              }}>
+                              Logout
+                            </div>
+                            <div 
+                              className='login-reg user-account'
+                              onClick={() => {
+                                navigate('/CollectionLibrary');
+                              }}>
                                 {(currentUser.photoURL === null) ? 
                                   (<FaRegUserCircle className='user-icon'/>) : (<img src={currentUser.photoURL} className='user-icon' alt=''/>)}
                                 <p className='username'>{currentUser.displayName}</p>

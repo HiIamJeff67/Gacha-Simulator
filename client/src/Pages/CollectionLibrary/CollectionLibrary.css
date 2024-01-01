@@ -1,0 +1,174 @@
+.library-container {
+    /* border: var(--test_border_3); */
+    border: 5px solid var(--container_outline_border_color_3);
+    z-index: var(--z_index_outer_container);
+    position: relative;
+    width: 90%;
+    height: 80%;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-rows: 0.1fr 0.9fr;
+    color: white;
+    border-radius: 15px 15px 5px 5px;
+    overflow: hidden;
+}
+
+.record-top-bar {
+    /* border: var(--test_border_1); */
+    background: hsl(0, 0%, 15%);
+    border-bottom: 5px solid var(--container_outline_border_color_3);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.game-switcher {
+    /* border: var(--test_border_1); */
+    border: 3px solid var(--container_outline_border_color_2);
+    background-color: #262626;
+    width: 20%;
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.switch-left-btn, .switch-right-btn {
+    z-index: var(--z_index_item_2);
+    width: 30px;
+    height: 30px;
+    background: gray;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    transition: var(--transition_select_color_change);
+}
+.switch-left-btn:hover, .switch-right-btn:hover {
+    opacity: 0.9;
+}
+.switch-left-btn {
+    rotate: 180deg;
+}
+.game-switcher img {
+    width: 100%;
+    height: 100%;
+}
+.game-name-container {
+    width: 50%;
+    height: 90%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+.game-name {
+    /* border: var(--test_border_1); */
+    z-index: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: var(--transition_summon_animation);
+    font-weight: bold;
+    color: var(--container_outline_border_color_1);
+}
+.total-item-amount, .rare-chr-amount, .distance-to-prevGuarantee {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 2px solid var(--container_outline_border_color_2);
+    border-radius: 10px;
+    gap: 10%;
+    height: 70%;
+    font-weight: bold;
+}
+.total-item-amount {
+    width: 12.5%;
+}
+.rare-chr-amount {
+    width: 17.5%;
+}
+.distance-to-prevGuarantee {
+    width: 17.5%;
+}
+.total-item-amount-title, .rare-chr-amount-title, .distance-to-prevGuarantee-title {
+    color: var(--container_outline_border_color_1);
+    user-select: none;
+}
+.total-item-amount-details, .rare-chr-amount-details, .distance-to-prevGuarantee-details {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sep {
+    color: hsl(0, 0%, 80%);
+}
+
+.card-display-area {
+    /* border: var(--test_border_2); */
+    background-color: #566b30;
+    overflow-y: scroll;
+}
+.card-display-area::-webkit-scrollbar {
+    display: none;
+}
+.card-display-1999 {
+    /* border: var(--test_border_1); */
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1%;
+    padding: 1%;
+}
+.card-1999 {
+    background: linear-gradient(hsl(45, 80%, 50%), hsl(50, 60%, 75%), hsl(45, 80%, 50%));
+    border: 5px solid #8b4513;
+    position: relative;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5%;
+    padding-bottom: 30%;
+    border-radius: 25px 25px 0px 0px;
+    animation: color-change 6s ease-in-out infinite forwards;
+    background-size: 200% 200%;
+    background-position: 100% 100%;
+    cursor: pointer;
+}
+@keyframes color-change {
+    0%, 100% {
+        background-position: 100% 100%;
+    }
+    50% {
+        background-position: 50% 25%;
+    }
+}
+.card-1999:hover {
+    transform: scale(105%);
+    transition: .35s ease-in-out;
+}
+
+.card-img-1999 {
+    width: 50%;
+}
+.card-name-1999 {
+    background: rgba(0, 0, 0, 0.15);
+    border-top: 2px solid #ff8c00;
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    padding: 5% 0 5% 0;
+    font-size: .9em;
+    font-weight: bold;
+    color: hsl(0, 0%, 25%);
+}

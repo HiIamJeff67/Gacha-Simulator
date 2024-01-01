@@ -7,7 +7,7 @@ import CharacterStarGenerator from './CharacterStarGenerator';
 import './SingleGachaDisplay1999.css';
 
 import UnilogImg from '../../../Images/unilog.png';
-import testChrImg from '../../../Images/紅弩箭.png';
+// import testChrImg from '../../../Images/紅弩箭.png';
 import Star5Video from '../../../Videos/5-star.mp4';
 
 const API_BASE = "http://localhost:8080";
@@ -25,6 +25,8 @@ const SingleGachaDisplay1999 = () => {
 
   const { poolIndex } = useParams();
 
+  const chr1999ImageContext = require.context('../../../Images/1999ImgSrc', false, /\.(webp)$/);
+
   useEffect(() => {
     if (currentUser === null) {
       // show the errorMessage(with component)
@@ -32,15 +34,19 @@ const SingleGachaDisplay1999 = () => {
       return;
     }
 
-    const initialUserGuarantee = async () => {
-      getDoc(doc(db, "userPulls", currentUser.uid))
-        .then((res) => {
-          if (res.exists()) {
-            currentUserGuarantee.current = parseInt(res.data().guarantee);
-            setFetchingGuaranteeDone(true);
-            console.log("current", currentUserGuarantee.current);
-          }
-        })
+    const getInitialUserGuarantee = async () => {
+      try {
+        getDoc(doc(db, "userPulls1999", currentUser.uid))
+          .then((res) => {
+            if (res.exists()) {
+              currentUserGuarantee.current = parseInt(res.data().guarantee);
+              setFetchingGuaranteeDone(true);
+              console.log("current", currentUserGuarantee.current);
+            }
+          })
+      } catch (err) {
+        console.log(`Failed to Connected to the firebase database or the data does not exist : ${err}`);
+      }
     }
  
     const fetchData = async () => {
@@ -60,7 +66,7 @@ const SingleGachaDisplay1999 = () => {
 
     const renderProcess = async () => {
       await fetchData();
-      await initialUserGuarantee();
+      await getInitialUserGuarantee();
     }
     renderProcess();
   }, []);
@@ -68,8 +74,8 @@ const SingleGachaDisplay1999 = () => {
   useEffect(() => {
     if (!fetchingGuaranteeDone) return
     const abortController = new AbortController();
-
     setVideoState(true);
+
     const fetchDataAndGuarantees = async () => {
       if (currentUserGuarantee.current === 69) {
         await getGuaranteeChrs(abortController);
@@ -146,10 +152,8 @@ const SingleGachaDisplay1999 = () => {
     }
   }
 
-  
-
   const storeUserPulls = async function(curGuarantees, curChrName, curChrStar) {    
-    await updateDoc(doc(db, "userPulls", currentUser.uid), {
+    await updateDoc(doc(db, "userPulls1999", currentUser.uid), {
       pulls: arrayUnion({
         name: (curChrName === "當期限定角色")
               ? curRateUpChr[0] : (curChrName === "當期限定角色2")
@@ -176,14 +180,17 @@ const SingleGachaDisplay1999 = () => {
               autoPlay
               playsInline
               onEnded={() => setVideoState(false)}
-              onClick={() => setVideoState(false)}
+              // onClick={() => setVideoState(false)} <= cancel the skip function
               >
               <source src={Star5Video} type='video/mp4'></source>
             </video>)}
-        {!videoState &&
+        {(!videoState && chrInfo) &&
           <div className='result-wrapper-1999'>
             <div className={`single-result-chr-1999 ${videoState ? "" : "active"}`}>
-              <img className='single-chr-img' src={testChrImg} alt=''></img>
+              <img className='single-chr-img' src={chr1999ImageContext(`./${((chrInfo[0] === "當期限定角色")
+                                                                              ? curRateUpChr[0] : (chrInfo[0] === "當期限定角色2")
+                                                                              ? curRateUpChr[1] : (chrInfo[0] === "當期限定角色3")
+                                                                              ? curRateUpChr[2] : chrInfo[0])}.webp`)} alt=''></img>
               <div className='single-chr-star'><CharacterStarGenerator generateNum={chrInfo[1]}/></div>
               <div className='single-chr-name'>
                 {(chrInfo[0] === "當期限定角色")

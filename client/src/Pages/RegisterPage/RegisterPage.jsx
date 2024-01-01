@@ -1,10 +1,21 @@
-import { useState } from 'react'
-import logo from '../../Images/logo.png'
+import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext';
+import logo from '../../Images/logo.png';
 import RegisterOutlet from '../../Components/RegisterOutlet/RegisterOutlet';
-import './RegisterPage.css'
+import './RegisterPage.css';
 
 const RegisterPage = () => {
+  const {currentUser} = useContext(AuthContext);
+
+  const navigate = useNavigate();
   const [bookState, setBookState] = useState("");
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/');
+    }
+  },[]);
 
   return (
     <div className="register-container">

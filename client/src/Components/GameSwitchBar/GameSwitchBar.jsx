@@ -18,7 +18,12 @@ const GameSwitchBar = () => {
 
   const checkActiveItemString = function(activeItemString) {
     activeItemString = activeItemString.toLowerCase();
-    if (activeItem === "#login" || activeItem === "#register") return true;
+    if (activeItemString === "#login" 
+        || activeItemString === "#register"
+        || activeItemString === "#collectionlibrary")  {
+          return true;
+    }
+
     const detectWord = "gachadisplay";
     let i = 0;
     for (const letter of activeItemString) {
@@ -43,7 +48,7 @@ const GameSwitchBar = () => {
           onClick={() => setActiveItem("#simulatorfor1999")}>
             <img src={ReverseIcon} width="50px" className='Reverse-icon'/>
         </Link>
-        <Link to={'/SimulatorForGenshin'} 
+        <Link to={'/SimulatorForGenshin'}
           className={`sw-bar-link ${((activeItem === "#simulatorforgenshin") || (activeItem === "#gachadetailsgenshin")) ? "active" : ""}`} 
           onClick={() => setActiveItem("#simulatorforgenshin")}>
             <img src={GenshinIcon} width="50px" className='Genshin-icon'/>

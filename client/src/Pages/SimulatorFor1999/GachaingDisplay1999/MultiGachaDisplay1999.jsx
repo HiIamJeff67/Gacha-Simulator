@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef, useContext } from 'react';
+import { Timestamp, arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { db } from '../../../firebase.js';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthContext';
 import CharacterStarGenerator from './CharacterStarGenerator';
@@ -16,19 +18,38 @@ const MultiGachaDisplay1999 = () => {
   const {currentUser} = useContext(AuthContext);
 
   const navigate = useNavigate();
+  const [curRateUpChr, setCurRateUpChr] = useState(null);
   const [rerenderKey, setRerenderKey] = useState(0);  // to prevent the user fresh the page
   const [tempChrInfo, setTempChrInfo] = useState([]);
   const [chrInfos, setChrInfos] = useState([]);
-  const [curRateUpChr, setCurRateUpChr] = useState(null);
-  const guaranteeDetRef = useRef(0);
   const [videoState, setVideoState] = useState(true);
+  const guaranteeDetRef = useRef(0);  // for 4 star guarantee detect on every 10 summons
+  const [fetchingGuaranteeDone, setFetchingGuaranteeDone] = useState(false);
+  const currentUserGuarantee = useRef(0);
 
   const { poolIndex } = useParams();
+
+  const chr1999ImageContext = require.context('../../../Images/1999ImgSrc', false, /\.(webp)$/);
 
   useEffect(() => {
     if (currentUser === null) {
       navigate('/Login');
       return;
+    }
+
+    const getInitialUserGuarantee = async () => {
+      try {
+        getDoc(doc(db, "userPulls1999", currentUser.uid))
+          .then((res) => {
+            if (res.exists()) {
+              currentUserGuarantee.current = parseInt(res.data().guarantee);
+              setFetchingGuaranteeDone(true);
+              console.log("current", currentUserGuarantee.current);
+            }
+          })
+      } catch (err) {
+        console.log(`Failed to Connected to the firebase database or the data does not exist : ${err}`);
+      }
     }
 
     const fetchData = async () => {
@@ -46,7 +67,11 @@ const MultiGachaDisplay1999 = () => {
       }
     };
 
-    fetchData();
+    const renderProcess = async () => {
+      await fetchData();
+      await getInitialUserGuarantee();
+    }
+    renderProcess();
   }, []);
 
   useEffect(() => {
@@ -54,19 +79,30 @@ const MultiGachaDisplay1999 = () => {
   },[tempChrInfo])
 
   useEffect(() => {
+    if (!fetchingGuaranteeDone) return;
+    const abortController = new AbortController();
     setTempChrInfo([]);
     setChrInfos([]);
     setVideoState(true);
 
-    const abortController = new AbortController();
-
-    getChrs(abortController);
-    guaranteeDetRef.current = 0;
+    const fetchDataAndGuarantees = async () => {
+      if (currentUserGuarantee.current >= 60 && currentUserGuarantee.current <= 69) {
+        getGuaranteeChrs(abortController);
+      }
+      else if (currentUserGuarantee.current >= 130 && currentUserGuarantee.current <= 139) {
+        getGuaranteeRateUpChr(abortController);
+      }
+      else {
+        getChrs(abortController);
+        guaranteeDetRef.current = 0;
+      }
+    }
+    fetchDataAndGuarantees();
 
     return () => {
       abortController.abort();
     };
-  }, [rerenderKey]);
+  }, [rerenderKey, fetchingGuaranteeDone]);
 
   const getChrs = async function (abortController) {
     try {
@@ -74,7 +110,7 @@ const MultiGachaDisplay1999 = () => {
         if (guaranteeDetRef.current < 9) {
           const response = await fetch(API_BASE + "/randomSelectOne", { signal: abortController.signal });
           const data = await response.json();
-  
+          currentUserGuarantee.current = (data.star === 6 && data.rateUp) ? 0 : currentUserGuarantee.current + 1;
           setTempChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
   
           if (data.star < 4) {
@@ -85,7 +121,7 @@ const MultiGachaDisplay1999 = () => {
   
           const response = await fetch(API_BASE + "/getGuarantee4star", { signal: abortController.signal });
           const data = await response.json();
-  
+          currentUserGuarantee.current = (data.star === 6 && data.rateUp) ? 0 : currentUserGuarantee.current + 1;
           setTempChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
         }
       }
@@ -96,7 +132,77 @@ const MultiGachaDisplay1999 = () => {
         console.log("Error during summoning:", error.message);
       }
     }
-  };
+  }
+  useEffect(() => {
+    if (tempChrInfo.length > 0 && fetchingGuaranteeDone) {
+      storeUserPulls(currentUserGuarantee.current, tempChrInfo[0], tempChrInfo[1]);
+      console.log(`/randomSelectOne get :${tempChrInfo[0]}/${tempChrInfo[1]}, g = ${currentUserGuarantee.current}`);
+    }
+  }, [currentUserGuarantee.current]);
+
+  const getGuaranteeChrs = async function (abortController) {
+    try {
+      const distenceToGuarantee = 70 - currentUserGuarantee.current;
+      for (let _ = 1; _ <= _SUMMONTIMES; _++) {
+        if (_ !== distenceToGuarantee) {
+          const response = await fetch(API_BASE + "/randomSelectOne", { signal: abortController.signal });
+          const data = await response.json();
+          currentUserGuarantee.current = (data.star === 6 && data.rateUp) ? 0 : currentUserGuarantee.current + 1;
+          setTempChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
+        } else {
+          const response = await fetch(API_BASE + "/getGuarantee6star", { signal: abortController.signal });
+          const data = await response.json();
+          currentUserGuarantee.current = (data.star === 6 && data.rateUp) ? 0 : currentUserGuarantee.current + 1;
+          setTempChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
+        }
+      }
+    } catch (error) {
+      if (error.name === "AbortError") {
+        console.log("Fetch aborted:", error.message);
+      } else {
+        console.log("Error during summoning:", error.message);
+      }
+    }
+  }
+
+  const getGuaranteeRateUpChr = async function (abortController) {
+    try {
+      const distenceToGuarantee = 140 - currentUserGuarantee.current;
+      for (let _ = 1; _ <= _SUMMONTIMES; _++) {
+        if (_ !== distenceToGuarantee) {
+          const response = await fetch(API_BASE + "/randomSelectOne", { signal: abortController.signal });
+          const data = await response.json();
+          currentUserGuarantee.current = (data.star === 6 && data.rateUp) ? 0 : currentUserGuarantee.current + 1;
+          setTempChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
+        } else {
+          const response = await fetch(API_BASE + "/getGuaranteeRateUp6star", { signal: abortController.signal });
+          const data = await response.json();
+          currentUserGuarantee.current = (data.star === 6 && data.rateUp) ? 0 : currentUserGuarantee.current + 1;
+          setTempChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
+        }
+      }
+    } catch (error) {
+      if (error.name === "AbortError") {
+        console.log("Fetch aborted:", error.message);
+      } else {
+        console.log("Error during summoning:", error.message);
+      }
+    }
+  }
+
+  const storeUserPulls = async function(curGuarantees, curChrName, curChrStar) {
+    await updateDoc(doc(db, "userPulls1999", currentUser.uid), {
+      pulls: arrayUnion({
+        name: (curChrName === "當期限定角色")
+              ? curRateUpChr[0] : (curChrName === "當期限定角色2")
+              ? curRateUpChr[1] : (curChrName === "當期限定角色3")
+              ? curRateUpChr[2] : curChrName,
+        star: curChrStar,
+        data: Timestamp.now(),
+      }),
+      guarantee: curGuarantees,
+    })
+  }
   
 
   const summonAgain = function() {  // use useState to lead the useEffect to make a rerender
@@ -116,7 +222,8 @@ const MultiGachaDisplay1999 = () => {
               >
               <source src={Star5Video} type='video/mp4'></source>
             </video>)}
-        {!videoState && <div className='result-wrapper-1999'>
+        {(!videoState && chrInfos) &&
+        <div className='result-wrapper-1999'>
           <div className='result-chr-wrapper-1999'>
             {chrInfos.map((chrInfo, index) => {
               if (chrInfo.length === 0) {
@@ -128,11 +235,15 @@ const MultiGachaDisplay1999 = () => {
                                  ${videoState ? "" : "active"} 
                                  ${(index / ((_SUMMONTIMES / 2) + 1) < 1) ? "result-chr-top" : "result-chr-bottom"}`} 
                      key={index}>
-                  <img className='ten-chr-img' src={testChrImg} alt=''></img>
-                  <div className='ten-chr-star'>
-                    <CharacterStarGenerator generateNum={chrInfo[1]}/>
-                  </div>
+                  <img className='ten-chr-img' 
+                       src={chr1999ImageContext(`./${((chrInfo[0] === "當期限定角色")
+                                                       ? curRateUpChr[0] : (chrInfo[0] === "當期限定角色2")
+                                                       ? curRateUpChr[1] : (chrInfo[0] === "當期限定角色3")
+                                                       ? curRateUpChr[2] : chrInfo[0])}.webp`)} alt=''></img>
                   <div className='ten-chr-name'>
+                    <div className='ten-chr-star'>
+                      <CharacterStarGenerator generateNum={chrInfo[1]}/>
+                    </div>
                     {(chrInfo[0] === "當期限定角色")
                       ? curRateUpChr[0] : (chrInfo[0] === "當期限定角色2")
                       ? curRateUpChr[1] : (chrInfo[0] === "當期限定角色3")
@@ -140,10 +251,10 @@ const MultiGachaDisplay1999 = () => {
                     </div>
                 </div>)
             })}
-            <div to={'/MultiGachaDisplay1999'} className='ten-draw-again-1999' onClick={summonAgain}>
+          </div>
+          <div to={'/MultiGachaDisplay1999'} className='ten-draw-again-1999' onClick={summonAgain}>
               <div className='ten-draw-again-icon'><img src={UnilogImg} width={'35px'} alt='unilog'/></div>
               Summon x10
-            </div>
           </div>
         </div>}
       </div>
