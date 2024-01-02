@@ -12,7 +12,7 @@ import testChrImg from '../../../Images/Kamisato_Ayaka.jpg';
 
 import { useParams } from 'react-router-dom';
 
-const API_BASE = "gacha-simulator-backend.vercel.app";
+const API_BASE = "https://gacha-simulator-backend.vercel.app";
 const _SUMMONTIMES = 10;
 
 const MultiGachaDisplayGenshin = () => {
