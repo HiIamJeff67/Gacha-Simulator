@@ -33,6 +33,10 @@ const CharacterSchema = new Schema({
     }
 })
 
+app.get('/', async(req, res) => {
+    res.json('test!');
+})
+
 /* ============================== connect to the database of 1999 ============================== */
 
 const Reversed1999DBConnection = mongoose.createConnection('mongodb+srv://iamjeffhi67:SOWdtKJHpkzuT2U5@simulator1999db.qh4flhu.mongodb.net/summonPoolData?retryWrites=true&w=majority');
