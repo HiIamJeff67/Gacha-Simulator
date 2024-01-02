@@ -10,7 +10,7 @@ import UnilogImg from '../../../Images/unilog.png';
 // import testChrImg from '../../../Images/紅弩箭.png';
 import Star5Video from '../../../Videos/5-star.mp4';
 
-const API_BASE = "https://gacha-simulator-backend.vercel.app";
+const API_BASE = "https://gacha-simulator-backend.vercel.app"; //   http://localhost:8080
 
 const SingleGachaDisplay1999 = () => {
   const {currentUser} = useContext(AuthContext);
@@ -199,15 +199,15 @@ const SingleGachaDisplay1999 = () => {
         {(!videoState && chrInfo) && (userDeviceMode === "PC") &&
           <div className='result-wrapper-1999'>
             <div className={`single-result-chr-1999 ${videoState ? "" : "active"}`}>
-              <img src={`../../../Images/1999ImgSrc/${
+              {/* <img src={`../../../Images/1999ImgSrc/${
                                                       (chrInfo[0] === "當期限定角色"
                                                       ? curRateUpChr[0] : (chrInfo[0] === "當期限定角色2")
                                                       ? curRateUpChr[1] : (chrInfo[0] === "當期限定角色3")
-                                                      ? curRateUpChr[2] : chrInfo[0])}.webp`} alt="" />
-              {/* <img className='single-chr-img' src={chr1999ImageContext(`./${((chrInfo[0] === "當期限定角色")
+                                                      ? curRateUpChr[2] : chrInfo[0])}.webp`} alt="" /> */}
+              <img className='single-chr-img' src={chr1999ImageContext(`./${((chrInfo[0] === "當期限定角色")
                                                                               ? curRateUpChr[0] : (chrInfo[0] === "當期限定角色2")
                                                                               ? curRateUpChr[1] : (chrInfo[0] === "當期限定角色3")
-                                                                              ? curRateUpChr[2] : chrInfo[0])}.webp`)} alt=''></img> */}
+                                                                              ? curRateUpChr[2] : chrInfo[0])}.webp`)} alt=''></img>
               <div className='single-chr-star'><CharacterStarGenerator generateNum={chrInfo[1]}/></div>
               <div className='single-chr-name'>
                 {(chrInfo[0] === "當期限定角色")
