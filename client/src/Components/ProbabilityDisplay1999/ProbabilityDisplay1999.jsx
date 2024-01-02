@@ -3,7 +3,7 @@ import StarFor1999 from '../StarFor1999/StarFor1999'
 import './ProbabilityDisplay1999.css'
 import { useParams } from 'react-router-dom';
 
-const API_BASE = "http://localhost:8080";
+const API_BASE = "https://gacha-simulator-backend.vercel.app";
 
 const ProbabilityDisplay1999 = () => {
 		const [chrInfo, setChrInfo] = useState(null);
