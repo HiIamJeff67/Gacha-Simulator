@@ -10,7 +10,7 @@ import intertwinedFate from '../../../Images/intertwinedFate.webp';
 import testChrImg from '../../../Images/Kamisato_Ayaka.jpg';
 import Star5Video from '../../../Videos/5starwish.mp4';
 
-const API_BASE = "http://localhost:8080";
+const API_BASE = "gacha-simulator-backend.vercel.app";
 
 const SingleGachaDisplayGenshin = () => {
   const {currentUser} = useContext(AuthContext);

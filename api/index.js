@@ -5,7 +5,13 @@ const cors = require('cors');
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+    {
+        origin: ["https://gacha-simulator-five.vercel.app"],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+));
 
 /* ============================== Schema of 1999 and genshin ============================== */
 

@@ -11,7 +11,7 @@ import Star5Video from '../../../Videos/5-star.mp4';
 import testChrImg from '../../../Images/紅弩箭.png';
 import { useParams } from 'react-router-dom';
 
-const API_BASE = "http://localhost:8080";
+const API_BASE = "gacha-simulator-backend.vercel.app";
 const _SUMMONTIMES = 10;
 
 const MultiGachaDisplay1999 = () => {

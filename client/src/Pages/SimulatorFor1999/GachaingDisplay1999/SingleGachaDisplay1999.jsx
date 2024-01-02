@@ -10,7 +10,7 @@ import UnilogImg from '../../../Images/unilog.png';
 // import testChrImg from '../../../Images/紅弩箭.png';
 import Star5Video from '../../../Videos/5-star.mp4';
 
-const API_BASE = "https://gacha-simulator-backend.vercel.app";
+const API_BASE = "gacha-simulator-backend.vercel.app";
 
 const SingleGachaDisplay1999 = () => {
   const {currentUser} = useContext(AuthContext);
