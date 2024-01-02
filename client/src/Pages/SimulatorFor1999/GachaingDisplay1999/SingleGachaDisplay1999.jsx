@@ -112,7 +112,7 @@ const SingleGachaDisplay1999 = () => {
       setChrInfo([data.name, data.star, data.rateUp, data.rateStart, data.rateEnd]);
       
       // storeUserPulls(currentUserGuarantee.current, data.name, data.star);
-      // console.log(`/randomSelectOne get :${data.name}/${data.star}, g = ${currentUserGuarantee.current}`);
+      console.log(`/randomSelectOne get :${data.name}/${data.star}, g = ${currentUserGuarantee.current}`);
     } catch (error) {
       if (error.name === "AbortError") {
         console.log("Fetch aborted:", error.message);
@@ -199,10 +199,15 @@ const SingleGachaDisplay1999 = () => {
         {(!videoState && chrInfo) && (userDeviceMode === "PC") &&
           <div className='result-wrapper-1999'>
             <div className={`single-result-chr-1999 ${videoState ? "" : "active"}`}>
-              <img className='single-chr-img' src={chr1999ImageContext(`./${((chrInfo[0] === "當期限定角色")
+              <img src={`../../../Images/1999ImgSrc/${
+                                                      (chrInfo[0] === "當期限定角色"
+                                                      ? curRateUpChr[0] : (chrInfo[0] === "當期限定角色2")
+                                                      ? curRateUpChr[1] : (chrInfo[0] === "當期限定角色3")
+                                                      ? curRateUpChr[2] : chrInfo[0])}.webp`} alt="" />
+              {/* <img className='single-chr-img' src={chr1999ImageContext(`./${((chrInfo[0] === "當期限定角色")
                                                                               ? curRateUpChr[0] : (chrInfo[0] === "當期限定角色2")
                                                                               ? curRateUpChr[1] : (chrInfo[0] === "當期限定角色3")
-                                                                              ? curRateUpChr[2] : chrInfo[0])}.webp`)} alt=''></img>
+                                                                              ? curRateUpChr[2] : chrInfo[0])}.webp`)} alt=''></img> */}
               <div className='single-chr-star'><CharacterStarGenerator generateNum={chrInfo[1]}/></div>
               <div className='single-chr-name'>
                 {(chrInfo[0] === "當期限定角色")
